@@ -1,5 +1,5 @@
 /* ==========================================================================
-   TPZTech Studio - Apple Liquid Glass Design System
+   TPZTech Studio - Liquid Glass Design System
    ========================================================================== */
 
 /* 1. Global Reset & Box Sizing */
@@ -52,10 +52,9 @@ body {
   --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 1px 0 rgba(255, 255, 255, 0.15);
   --glass-shadow-hover: 0 16px 40px -10px rgba(56, 189, 248, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.25);
   
-  --nav-bg: rgba(12, 16, 23, 0.75);
+  --nav-bg: rgba(12, 16, 23, 0.85);
+  --nav-drawer-bg: rgba(11, 15, 23, 0.98);
   --modal-overlay: rgba(0, 0, 0, 0.75);
-  --input-bg: rgba(255, 255, 255, 0.05);
-  --input-border: rgba(255, 255, 255, 0.15);
 
   --orb-1-color: rgba(56, 189, 248, 0.14);
   --orb-2-color: rgba(139, 92, 246, 0.12);
@@ -86,10 +85,9 @@ body {
   --glass-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.06), 0 0 0 1px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.8);
   --glass-shadow-hover: 0 20px 40px -10px rgba(2, 132, 199, 0.18), 0 0 0 1px rgba(2, 132, 199, 0.2);
 
-  --nav-bg: rgba(255, 255, 255, 0.8);
+  --nav-bg: rgba(255, 255, 255, 0.9);
+  --nav-drawer-bg: rgba(255, 255, 255, 0.99);
   --modal-overlay: rgba(15, 23, 42, 0.45);
-  --input-bg: rgba(255, 255, 255, 0.85);
-  --input-border: rgba(148, 163, 184, 0.35);
 
   --orb-1-color: rgba(56, 189, 248, 0.18);
   --orb-2-color: rgba(139, 92, 246, 0.14);
@@ -160,7 +158,7 @@ body {
   100% { transform: translate(-50px, -30px) scale(0.96); }
 }
 
-/* 4. Core Apple Liquid Glass Component */
+/* 4. Core Liquid Glass Component */
 .liquid-glass {
   background: var(--glass-bg);
   -webkit-backdrop-filter: blur(20px);
@@ -184,6 +182,7 @@ body {
               box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .liquid-card:hover {
@@ -250,7 +249,7 @@ body {
   top: 1.25rem;
   left: 0;
   right: 0;
-  width: 92%;
+  width: 94%;
   max-width: 1280px;
   margin: 0 auto;
   z-index: 1000;
@@ -260,7 +259,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 24px;
+  padding: 8px 20px;
   background: var(--nav-bg);
   -webkit-backdrop-filter: blur(24px);
   backdrop-filter: blur(24px);
@@ -268,43 +267,59 @@ body {
   box-shadow: var(--glass-shadow);
   border-radius: 9999px;
   transition: all 0.3s ease;
+  position: relative;
 }
 
 .nav-brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   text-decoration: none;
   color: var(--text-primary);
   font-weight: 800;
-  font-size: 1.15rem;
+  font-size: 1.12rem;
   letter-spacing: -0.02em;
+  flex-shrink: 0;
+}
+
+.nav-brand-img {
+  height: 34px;
+  width: auto;
+  max-width: 44px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0, 102, 255, 0.35));
+  transition: transform 0.25s ease;
+}
+
+.nav-brand:hover .nav-brand-img {
+  transform: scale(1.06);
 }
 
 .nav-brand-icon {
-  width: 34px;
-  height: 34px;
-  border-radius: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
   background: linear-gradient(135deg, var(--accent-cyan), var(--accent-violet));
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 20px;
   list-style: none;
+  white-space: nowrap;
 }
 
 .nav-link {
   text-decoration: none;
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 500;
   transition: color 0.2s ease;
   position: relative;
@@ -316,13 +331,14 @@ body {
 
 .nav-link.highlight {
   color: var(--accent-cyan);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .nav-controls {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  flex-shrink: 0;
 }
 
 /* Theme & Language Toggles */
@@ -332,20 +348,23 @@ body {
   background: var(--glass-bg);
   border: 1px solid var(--glass-border);
   border-radius: 9999px;
-  padding: 3px;
-  gap: 3px;
+  padding: 2px;
+  gap: 2px;
 }
 
 .theme-btn, .lang-btn {
   background: transparent;
   border: none;
   color: var(--text-secondary);
-  padding: 4px 10px;
+  padding: 5px 8px;
   font-size: 0.78rem;
   font-weight: 600;
   border-radius: 9999px;
   cursor: pointer;
   transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .theme-btn:hover, .lang-btn:hover {
@@ -358,15 +377,25 @@ body {
   box-shadow: 0 2px 8px rgba(2, 132, 199, 0.35);
 }
 
-/* Mobile Nav Toggle */
+/* Mobile Nav Toggle Button */
 .mobile-menu-btn {
   display: none;
-  background: transparent;
-  border: none;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   color: var(--text-primary);
-  font-size: 1.4rem;
+  font-size: 1.25rem;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  padding: 6px;
+  transition: all 0.2s ease;
+}
+
+.mobile-menu-btn:hover {
+  background: var(--glass-bg-hover);
+  color: var(--accent-cyan);
 }
 
 /* 6. Layout & Sections */
@@ -379,13 +408,13 @@ body {
 .section-container {
   width: 92%;
   max-width: 1240px;
-  margin: 0 auto 6rem;
+  margin: 0 auto 5rem;
 }
 
 .section-header {
   text-align: center;
   max-width: 760px;
-  margin: 0 auto 3rem;
+  margin: 0 auto 2.5rem;
 }
 
 .section-tag {
@@ -395,19 +424,19 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.12em;
   color: var(--accent-cyan);
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.5rem;
 }
 
 .section-title {
-  font-size: 2.3rem;
+  font-size: 2.2rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   color: var(--text-primary);
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.6rem;
 }
 
 .section-subtitle {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: var(--text-secondary);
   line-height: 1.6;
 }
@@ -415,7 +444,7 @@ body {
 /* 7. Hero Section */
 .hero-section {
   text-align: center;
-  padding: 3rem 1rem 5rem;
+  padding: 3rem 1rem 4.5rem;
 }
 
 .hero-badge {
@@ -434,9 +463,9 @@ body {
 }
 
 .hero-title {
-  font-size: 3.5rem;
+  font-size: 3.4rem;
   font-weight: 800;
-  line-height: 1.15;
+  line-height: 1.18;
   letter-spacing: -0.03em;
   margin-bottom: 1.5rem;
 }
@@ -460,14 +489,14 @@ body {
   justify-content: center;
   align-items: center;
   gap: 16px;
-  margin-bottom: 4rem;
+  margin-bottom: 3.5rem;
   flex-wrap: wrap;
 }
 
 /* Trust Metrics */
 .trust-metrics {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
   gap: 1.25rem;
   max-width: 1040px;
   margin: 0 auto;
@@ -479,7 +508,7 @@ body {
 }
 
 .trust-chip-val {
-  font-size: 1.6rem;
+  font-size: 1.55rem;
   font-weight: 800;
   color: var(--accent-cyan);
   margin-bottom: 4px;
@@ -487,18 +516,104 @@ body {
 }
 
 .trust-chip-lbl {
-  font-size: 0.83rem;
+  font-size: 0.82rem;
   color: var(--text-secondary);
   font-weight: 500;
 }
 
-/* 8. About (Pillars) Section */
-.pillars-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
+/* 8. Swiper Base & Slide Containers */
+.swiper {
+  width: 100%;
+  padding: 10px 4px 54px 4px !important;
+  overflow: hidden;
+  position: relative;
 }
 
+.swiper-wrapper {
+  display: flex;
+  align-items: stretch;
+}
+
+.swiper-slide {
+  height: auto !important;
+  display: flex;
+  box-sizing: border-box;
+}
+
+.swiper-slide > .liquid-card,
+.swiper-slide > .pillar-card,
+.swiper-slide > .service-card,
+.swiper-slide > .game-card,
+.swiper-slide > .tech-chip,
+.swiper-slide > .partner-card {
+  width: 100%;
+  height: 100%;
+}
+
+/* Swiper Navigation & Controls */
+.swiper-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-top: 0.5rem;
+}
+
+.swiper-btn-prev, .swiper-btn-next {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  color: var(--text-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.15rem;
+  font-weight: 700;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.swiper-btn-prev:hover, .swiper-btn-next:hover {
+  background: var(--glass-bg-hover);
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  transform: scale(1.06);
+}
+
+.swiper-btn-prev.swiper-button-disabled,
+.swiper-btn-next.swiper-button-disabled {
+  opacity: 0.25;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.swiper-pagination-bullets {
+  bottom: 12px !important;
+}
+
+.swiper-pagination-bullet {
+  background: var(--text-secondary) !important;
+  opacity: 0.35 !important;
+  width: 9px !important;
+  height: 9px !important;
+  transition: all 0.3s ease !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--accent-cyan) !important;
+  width: 26px !important;
+  border-radius: 6px !important;
+  opacity: 1 !important;
+  box-shadow: 0 0 10px var(--accent-cyan);
+}
+
+/* 9. About (Pillars) Section */
 .pillar-card {
   padding: 2.2rem;
   display: flex;
@@ -511,25 +626,19 @@ body {
 }
 
 .pillar-title {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 0.75rem;
 }
 
 .pillar-desc {
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   color: var(--text-secondary);
   line-height: 1.65;
 }
 
-/* 9. Services Section */
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 1.75rem;
-}
-
+/* 10. Services Section */
 .service-card {
   padding: 2.2rem;
   display: flex;
@@ -560,14 +669,14 @@ body {
 }
 
 .service-title {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 0.75rem;
 }
 
 .service-desc {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--text-secondary);
   line-height: 1.6;
   margin-bottom: 1.5rem;
@@ -581,7 +690,7 @@ body {
 }
 
 .service-highlights li {
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   color: var(--text-secondary);
   margin-bottom: 6px;
   display: flex;
@@ -595,19 +704,19 @@ body {
   font-size: 0.75rem;
 }
 
-/* 10. Upcoming Games Section */
+/* 11. Upcoming Games Section */
 .filter-bar {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2rem;
   flex-wrap: wrap;
 }
 
 .filter-btn {
   padding: 8px 20px;
   border-radius: 9999px;
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   font-weight: 600;
   border: 1px solid var(--glass-border);
   background: var(--glass-bg);
@@ -626,12 +735,6 @@ body {
   border-color: transparent;
   color: #ffffff;
   box-shadow: 0 4px 15px rgba(2, 132, 199, 0.4);
-}
-
-.game-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
-  gap: 1.75rem;
 }
 
 .game-card {
@@ -723,7 +826,7 @@ body {
 }
 
 .game-title {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 0.35rem;
@@ -737,7 +840,7 @@ body {
 }
 
 .game-desc {
-  font-size: 0.86rem;
+  font-size: 0.85rem;
   color: var(--text-secondary);
   line-height: 1.55;
   margin-bottom: 1.4rem;
@@ -776,20 +879,19 @@ body {
   border-color: transparent;
 }
 
-/* 11. Tech Stack Ecosystem */
-.tech-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1.25rem;
-}
-
+/* 12. Tech Stack Section */
 .tech-chip {
-  padding: 1.25rem 1rem;
+  padding: 1.5rem 1.2rem;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.tech-icon {
+  font-size: 2rem;
+  margin-bottom: 0.6rem;
 }
 
 .tech-name {
@@ -804,104 +906,100 @@ body {
   color: var(--text-secondary);
 }
 
-/* 12. Contact Section & Form */
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.3fr;
-  gap: 2.5rem;
-  align-items: start;
-}
-
-.contact-info-card {
-  padding: 2.5rem;
+/* 13. Strategic Partners Section */
+.partner-card {
+  padding: 2.2rem;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
 }
 
-.contact-item {
+.partner-card-header {
   display: flex;
-  align-items: flex-start;
-  gap: 14px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
 }
 
-.contact-item-icon {
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
+.partner-visual {
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  color: var(--accent-cyan);
-  flex-shrink: 0;
+  gap: 12px;
 }
 
-.contact-item-label {
-  font-size: 0.8rem;
-  color: var(--text-muted);
+.partner-logo-img {
+  height: 44px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(56, 189, 248, 0.35));
+  transition: transform 0.3s ease;
+}
+
+.partner-card:hover .partner-logo-img {
+  transform: scale(1.05);
+}
+
+.partner-icon {
+  font-size: 2.4rem;
+}
+
+.partner-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: 2px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  background: var(--glass-bg);
+  border: 1px solid var(--accent-cyan);
+  color: var(--accent-cyan);
 }
 
-.contact-item-val {
-  font-size: 0.95rem;
-  font-weight: 600;
+.partner-title {
+  font-size: 1.35rem;
+  font-weight: 800;
   color: var(--text-primary);
-  line-height: 1.5;
+  margin-bottom: 0.4rem;
 }
 
-.contact-form {
-  padding: 2.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.form-label {
+.partner-role {
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--accent-cyan);
+  margin-bottom: 1rem;
 }
 
-.form-input, .form-select, .form-textarea {
-  width: 100%;
-  padding: 12px 16px;
-  border-radius: 10px;
-  background: var(--input-bg);
-  border: 1px solid var(--input-border);
-  color: var(--text-primary);
-  font-size: 0.92rem;
-  font-family: inherit;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  outline: none;
+.partner-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  flex: 1;
 }
 
-.form-input:focus, .form-select:focus, .form-textarea:focus {
-  border-color: var(--accent-cyan);
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+.partner-highlights {
+  list-style: none;
+  border-top: 1px solid var(--glass-border);
+  padding-top: 1rem;
+  margin-top: auto;
 }
 
-.form-select option {
-  background: var(--bg-primary);
-  color: var(--text-primary);
+.partner-highlights li {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.form-textarea {
-  resize: vertical;
-  min-height: 110px;
+.partner-highlights li::before {
+  content: "✦";
+  color: var(--accent-cyan);
+  font-size: 0.75rem;
 }
 
-/* 13. Corporate Footer (Tepaylink inspired compliance & elegance) */
+/* 14. Corporate Footer */
 .site-footer {
   width: 92%;
   max-width: 1240px;
@@ -1008,7 +1106,7 @@ body {
   color: var(--text-muted);
 }
 
-/* 14. Glass Modal (Teaser & Pre-register) */
+/* 15. Glass Modal */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -1016,8 +1114,8 @@ body {
   width: 100vw;
   height: 100vh;
   background: var(--modal-overlay);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1069,7 +1167,7 @@ body {
   to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
-/* 15. Toast Notification */
+/* 16. Toast Notification */
 .toast-notification {
   position: fixed;
   bottom: 2rem;
@@ -1096,51 +1194,90 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* 16. Mobile & Tablet Responsiveness */
-@media (max-width: 1024px) {
-  .hero-title { font-size: 2.8rem; }
-  .contact-grid { grid-template-columns: 1fr; }
-  .footer-top { grid-template-columns: 1fr 1fr; }
+/* 17. Responsive Breakpoints & Clean Hamburger Drawer */
+@media (max-width: 1300px) {
+  .theme-btn span {
+    display: none; /* Keep theme toggle compact by showing only icons */
+  }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1180px) {
   .nav-links {
     display: none;
     position: absolute;
-    top: 100%;
+    top: calc(100% + 14px);
     left: 0;
     right: 0;
-    margin-top: 10px;
-    background: var(--nav-bg);
-    -webkit-backdrop-filter: blur(24px);
-    backdrop-filter: blur(24px);
-    border: 1px solid var(--glass-border);
-    border-radius: 20px;
+    background: var(--nav-drawer-bg);
+    -webkit-backdrop-filter: blur(40px);
+    backdrop-filter: blur(40px);
+    border: 1px solid var(--glass-border-specular);
+    border-radius: 24px;
     padding: 1.5rem;
     flex-direction: column;
-    gap: 16px;
-    box-shadow: var(--glass-shadow);
+    gap: 10px;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55);
+    z-index: 1000;
   }
 
   .nav-links.mobile-open {
     display: flex;
+    animation: drawerSlideDown 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes drawerSlideDown {
+    from { opacity: 0; transform: translateY(-12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .nav-links.mobile-open li {
+    width: 100%;
+    list-style: none;
+  }
+
+  .nav-links.mobile-open .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px 20px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 14px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-align: center;
+    width: 100%;
+    transition: all 0.2s ease;
+  }
+
+  .nav-links.mobile-open .nav-link:hover,
+  .nav-links.mobile-open .nav-link.active {
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-violet));
+    color: #ffffff;
+    border-color: transparent;
   }
 
   .mobile-menu-btn {
-    display: block;
+    display: inline-flex;
   }
+}
 
+@media (max-width: 1024px) {
+  .hero-title { font-size: 2.8rem; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
   .hero-title { font-size: 2.2rem; }
   .hero-desc { font-size: 1rem; }
   .section-title { font-size: 1.8rem; }
   .footer-top { grid-template-columns: 1fr; gap: 2rem; }
   .footer-bottom { flex-direction: column; text-align: center; }
-  .contact-form, .contact-info-card { padding: 1.5rem; }
   .site-footer { padding: 2rem 1.25rem 1rem; }
 }
 
 @media (max-width: 480px) {
   .hero-title { font-size: 1.8rem; }
   .trust-metrics { grid-template-columns: 1fr 1fr; }
-  .theme-btn span, .lang-btn span { display: none; }
 }

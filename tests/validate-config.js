@@ -31,7 +31,7 @@ assert(config.company, 'config.company is missing');
 checkBilingual(config.company.name, 'company.name');
 assert(config.company.name.vi.includes('Công ty TNHH TPZTech Studio'), 'company.name.vi must match');
 checkBilingual(config.company.address, 'company.address');
-assert(config.company.address.vi.includes('Thành Phố Đồng Nai'), 'company.address.vi must specify Thành Phố Đồng Nai, Việt Nam');
+assert(config.company.address.vi.includes('Việt Nam'), 'company.address.vi must specify Việt Nam');
 assert(config.company.email, 'company.email is missing');
 assert(config.company.hotline, 'company.hotline is missing');
 
@@ -87,9 +87,13 @@ config.upcomingGames.forEach((g, idx) => {
 // 7. Tech Stack
 assert(Array.isArray(config.techStack) && config.techStack.length >= 4, 'techStack must have >= 4 items');
 
-// 8. Contact & Footer
-assert(config.contact, 'contact section missing');
-checkBilingual(config.contact.title, 'contact.title');
+// 8. Strategic Partners
+assert(config.strategicPartnersSection, 'strategicPartnersSection missing');
+checkBilingual(config.strategicPartnersSection.title, 'strategicPartnersSection.title');
+assert(Array.isArray(config.strategicPartners) && config.strategicPartners.length >= 1, 'strategicPartners must have >= 1 items');
+assert.strictEqual(config.strategicPartners[0].name, 'TPZ-GameStudio', 'First partner must be TPZ-GameStudio');
+
+// 9. Footer
 assert(config.footer, 'footer section missing');
 checkBilingual(config.footer.copyright, 'footer.copyright');
 

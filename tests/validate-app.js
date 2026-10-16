@@ -21,7 +21,7 @@ assert(appCode.includes('setLang'), 'Must include setLang method');
 assert(appCode.includes('openGameModal'), 'Must include openGameModal method');
 assert(appCode.includes('closeGameModal'), 'Must include closeGameModal method');
 assert(appCode.includes('handlePreregister'), 'Must include handlePreregister method');
-assert(appCode.includes('handleContactSubmit'), 'Must include handleContactSubmit method');
+assert(appCode.includes('initSwipers'), 'Must include initSwipers method for Swiper.js carousels');
 assert(appCode.includes('filteredGames'), 'Must include filteredGames computed property');
 
 console.log('PASS: app.js syntax and key reactive logic verified successfully!');

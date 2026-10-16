@@ -1,9 +1,9 @@
 /**
  * TPZTech Studio - Vue 3 Main Application
- * Apple Liquid Glassmorphism Landing Page Engine
+ * Liquid Glassmorphism Landing Page Engine with Swiper.js Carousels
  */
 
-const { createApp, ref, reactive, computed, onMounted, onUnmounted } = Vue;
+const { createApp, ref, reactive, computed, onMounted, onUnmounted, nextTick } = Vue;
 
 const app = createApp({
   setup() {
@@ -27,21 +27,19 @@ const app = createApp({
     const selectedGame = ref(null);
     const preregisterEmail = ref('');
 
-    // Contact Form
-    const contactForm = reactive({
-      name: '',
-      email: '',
-      service: 'game',
-      message: ''
-    });
-    const isSubmittingContact = ref(false);
-
     // Toast Notifications
     const toast = reactive({
       show: false,
       message: '',
       timer: null
     });
+
+    // Swiper instances storage
+    let aboutSwiperInstance = null;
+    let servicesSwiperInstance = null;
+    let gamesSwiperInstance = null;
+    let techSwiperInstance = null;
+    let partnersSwiperInstance = null;
 
     // 2. Localization Helper
     const t = (item) => {
@@ -81,6 +79,10 @@ const app = createApp({
       lang.value = newLang;
       localStorage.setItem('tpz_lang', newLang);
       document.documentElement.setAttribute('lang', newLang);
+      // Update swipers text/measurements if needed
+      nextTick(() => {
+        updateAllSwipers();
+      });
     };
 
     // 5. Games Filtering & Modal Methods
@@ -94,6 +96,12 @@ const app = createApp({
 
     const setCategory = (catId) => {
       activeCategory.value = catId;
+      nextTick(() => {
+        if (gamesSwiperInstance) {
+          gamesSwiperInstance.update();
+          gamesSwiperInstance.slideTo(0);
+        }
+      });
     };
 
     const openGameModal = (game) => {
@@ -130,27 +138,7 @@ const app = createApp({
       closeGameModal();
     };
 
-    // 6. Contact Form Submission
-    const handleContactSubmit = () => {
-      if (!contactForm.name || !contactForm.email || !contactForm.message) {
-        const errMsg = t(config.value?.toasts?.validationError) || 'Vui lòng điền đầy đủ các thông tin cần thiết';
-        showToast(errMsg, 3000);
-        return;
-      }
-
-      isSubmittingContact.value = true;
-      setTimeout(() => {
-        isSubmittingContact.value = false;
-        const successMsg = t(config.value?.toasts?.contactSuccess) || 'Đã gửi lời nhắn thành công!';
-        showToast(successMsg, 4000);
-        contactForm.name = '';
-        contactForm.email = '';
-        contactForm.service = 'game';
-        contactForm.message = '';
-      }, 600);
-    };
-
-    // 7. Navigation Interactions
+    // 6. Navigation Interactions
     const toggleMobileMenu = () => {
       isMobileMenuOpen.value = !isMobileMenuOpen.value;
     };
@@ -168,6 +156,134 @@ const app = createApp({
       }
     };
 
+    // 7. Swiper Initializer using Swiper.js library
+    const initSwipers = () => {
+      if (typeof Swiper === 'undefined') {
+        console.warn('Swiper.js library not loaded yet');
+        return;
+      }
+
+      nextTick(() => {
+        // 1. About Swiper (Tầm nhìn & Sứ mệnh)
+        if (document.querySelector('.about-swiper')) {
+          if (aboutSwiperInstance) aboutSwiperInstance.destroy(true, true);
+          aboutSwiperInstance = new Swiper('.about-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 24,
+            grabCursor: true,
+            breakpoints: {
+              640: { slidesPerView: 2, spaceBetween: 20 },
+              1024: { slidesPerView: 3, spaceBetween: 24 }
+            },
+            pagination: {
+              el: '.about-pagination',
+              clickable: true
+            },
+            navigation: {
+              nextEl: '.about-next',
+              prevEl: '.about-prev'
+            }
+          });
+        }
+
+        // 2. Services Swiper (Lĩnh vực hoạt động & Dịch vụ)
+        if (document.querySelector('.services-swiper')) {
+          if (servicesSwiperInstance) servicesSwiperInstance.destroy(true, true);
+          servicesSwiperInstance = new Swiper('.services-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 24,
+            grabCursor: true,
+            breakpoints: {
+              640: { slidesPerView: 2, spaceBetween: 20 },
+              1024: { slidesPerView: 3, spaceBetween: 24 }
+            },
+            pagination: {
+              el: '.services-pagination',
+              clickable: true
+            },
+            navigation: {
+              nextEl: '.services-next',
+              prevEl: '.services-prev'
+            }
+          });
+        }
+
+        // 3. Upcoming Games Swiper (Dự án game sắp ra mắt)
+        if (document.querySelector('.games-swiper')) {
+          if (gamesSwiperInstance) gamesSwiperInstance.destroy(true, true);
+          gamesSwiperInstance = new Swiper('.games-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 24,
+            grabCursor: true,
+            breakpoints: {
+              640: { slidesPerView: 2, spaceBetween: 20 },
+              1024: { slidesPerView: 3, spaceBetween: 24 }
+            },
+            pagination: {
+              el: '.games-pagination',
+              clickable: true
+            },
+            navigation: {
+              nextEl: '.games-next',
+              prevEl: '.games-prev'
+            }
+          });
+        }
+
+        // 4. Tech Stack Swiper (Công nghệ nền tảng)
+        if (document.querySelector('.tech-swiper')) {
+          if (techSwiperInstance) techSwiperInstance.destroy(true, true);
+          techSwiperInstance = new Swiper('.tech-swiper', {
+            slidesPerView: 2,
+            spaceBetween: 16,
+            grabCursor: true,
+            breakpoints: {
+              480: { slidesPerView: 3, spaceBetween: 16 },
+              768: { slidesPerView: 4, spaceBetween: 20 },
+              1024: { slidesPerView: 6, spaceBetween: 20 }
+            },
+            pagination: {
+              el: '.tech-pagination',
+              clickable: true
+            },
+            navigation: {
+              nextEl: '.tech-next',
+              prevEl: '.tech-prev'
+            }
+          });
+        }
+
+        // 5. Strategic Partners Swiper (Đối tác chiến lược)
+        if (document.querySelector('.partners-swiper')) {
+          if (partnersSwiperInstance) partnersSwiperInstance.destroy(true, true);
+          partnersSwiperInstance = new Swiper('.partners-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 24,
+            grabCursor: true,
+            breakpoints: {
+              768: { slidesPerView: 2, spaceBetween: 24 }
+            },
+            pagination: {
+              el: '.partners-pagination',
+              clickable: true
+            },
+            navigation: {
+              nextEl: '.partners-next',
+              prevEl: '.partners-prev'
+            }
+          });
+        }
+      });
+    };
+
+    const updateAllSwipers = () => {
+      if (aboutSwiperInstance) aboutSwiperInstance.update();
+      if (servicesSwiperInstance) servicesSwiperInstance.update();
+      if (gamesSwiperInstance) gamesSwiperInstance.update();
+      if (techSwiperInstance) techSwiperInstance.update();
+      if (partnersSwiperInstance) partnersSwiperInstance.update();
+    };
+
     // 8. Load Configuration Data
     const loadConfig = async () => {
       try {
@@ -177,6 +293,7 @@ const app = createApp({
           throw new Error(`Failed to load config.json (status: ${res.status})`);
         }
         config.value = await res.json();
+        initSwipers();
       } catch (err) {
         console.warn('Could not load config.json via fetch, using fallback data:', err.message);
         loadError.value = err.message;
@@ -207,7 +324,7 @@ const app = createApp({
 
       // Section spy on scroll
       const handleScroll = () => {
-        const sections = ['home', 'about', 'services', 'games', 'partners', 'contact'];
+        const sections = ['home', 'about', 'services', 'games', 'tech-stack', 'partners'];
         const scrollPosition = window.scrollY + 200;
         for (const id of sections) {
           const el = document.getElementById(id);
@@ -227,6 +344,11 @@ const app = createApp({
       if (systemThemeMediaQuery) {
         systemThemeMediaQuery.removeEventListener('change', handleSystemThemeChange);
       }
+      if (aboutSwiperInstance) aboutSwiperInstance.destroy();
+      if (servicesSwiperInstance) servicesSwiperInstance.destroy();
+      if (gamesSwiperInstance) gamesSwiperInstance.destroy();
+      if (techSwiperInstance) techSwiperInstance.destroy();
+      if (partnersSwiperInstance) partnersSwiperInstance.destroy();
     });
 
     return {
@@ -240,8 +362,6 @@ const app = createApp({
       activeCategory,
       selectedGame,
       preregisterEmail,
-      contactForm,
-      isSubmittingContact,
       toast,
       t,
       setTheme,
@@ -251,7 +371,6 @@ const app = createApp({
       openGameModal,
       closeGameModal,
       handlePreregister,
-      handleContactSubmit,
       toggleMobileMenu,
       closeMobileMenu,
       scrollToSection

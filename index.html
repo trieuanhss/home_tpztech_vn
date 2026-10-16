@@ -6,10 +6,10 @@
   <title>Công ty TNHH TPZTech Studio | Thiết Kế Phần Mềm & Game Online</title>
   
   <!-- SEO & Open Graph Meta -->
-  <meta name="description" content="Công ty TNHH TPZTech Studio chuyên thiết kế, phát triển phần mềm doanh nghiệp và sản xuất trò chơi trực tuyến thế hệ mới tại Thành Phố Đồng Nai, Việt Nam.">
-  <meta name="keywords" content="TPZTech Studio, TPZTech, game studio việt nam, game online, phát triển phần mềm đồng nai, lập trình game, game sắp ra mắt">
+  <meta name="description" content="Công ty TNHH TPZTech Studio chuyên thiết kế, phát triển phần mềm doanh nghiệp và sản xuất trò chơi trực tuyến thế hệ mới.">
+  <meta name="keywords" content="TPZTech Studio, TPZTech, game studio việt nam, game online, phát triển phần mềm, lập trình game, game sắp ra mắt">
   <meta property="og:title" content="Công ty TNHH TPZTech Studio | Thiết Kế Phần Mềm & Game Online">
-  <meta property="og:description" content="Khám phá thế giới game và các giải pháp phần mềm hiện đại tại TPZTech Studio, Đồng Nai, Việt Nam.">
+  <meta property="og:description" content="Khám phá thế giới game và các giải pháp phần mềm hiện đại tại TPZTech Studio.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#07090e">
   <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
@@ -18,6 +18,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Swiper.js CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 
   <!-- Anti-FOUC Script for Theme (Executes immediately before page paint) -->
   <script>
@@ -44,6 +47,8 @@
 
   <!-- Vue 3 Global CDN -->
   <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <!-- Swiper.js Bundle CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <!-- Application Logic -->
   <script src="app.js" defer></script>
 </head>
@@ -61,11 +66,12 @@
       <nav class="liquid-nav" role="navigation" aria-label="Main Navigation">
         <!-- Brand Logo -->
         <a href="#home" class="nav-brand" @click.prevent="scrollToSection('home')">
-          <div class="nav-brand-icon">✦</div>
+          <img v-if="config && config.company.logo" :src="config.company.logo" :alt="config.company.shortName" class="nav-brand-img">
+          <div v-else class="nav-brand-icon">✦</div>
           <span>{{ config ? config.company.shortName : 'TPZTech Studio' }}</span>
         </a>
 
-        <!-- Desktop Navigation Links -->
+        <!-- Desktop Navigation Links (Switches to Hamburger early at 1180px) -->
         <ul class="nav-links" :class="{ 'mobile-open': isMobileMenuOpen }">
           <li v-for="item in (config ? config.navigation : [])" :key="item.id">
             <a 
@@ -82,7 +88,7 @@
           </li>
         </ul>
 
-        <!-- Controls: Theme, Language & CTA -->
+        <!-- Controls: Theme, Language & Mobile Toggle -->
         <div class="nav-controls">
           <!-- Theme Toggle (Dark / Light / Auto) -->
           <div class="theme-toggle" :title="t({ vi: 'Chế độ giao diện', en: 'Theme mode' })">
@@ -173,12 +179,12 @@
           <a href="#games" class="liquid-btn-primary" @click.prevent="scrollToSection('games')">
             {{ t(config.hero.primaryCta) }}
           </a>
-          <a href="#contact" class="liquid-btn-glass" @click.prevent="scrollToSection('contact')">
+          <a href="#partners" class="liquid-btn-glass" @click.prevent="scrollToSection('partners')">
             {{ t(config.hero.secondaryCta) }}
           </a>
         </div>
 
-        <!-- Trust Metric Glass Chips (Tepaylink inspired trust indicators) -->
+        <!-- Trust Metric Glass Chips -->
         <div class="trust-metrics">
           <div 
             v-for="(metric, idx) in config.hero.trustMetrics" 
@@ -191,7 +197,7 @@
         </div>
       </section>
 
-      <!-- 3. About Us Section: Vision - Mission - Philosophy -->
+      <!-- 3. About Us Section: Vision - Mission - Philosophy (Swiper Horizontal Carousel) -->
       <section id="about" class="section-container">
         <div class="section-header">
           <span class="section-tag">{{ t(config.about.tag) }}</span>
@@ -199,20 +205,32 @@
           <p class="section-subtitle">{{ t(config.about.subtitle) }}</p>
         </div>
 
-        <div class="pillars-grid">
-          <div 
-            v-for="(pillar, idx) in config.about.pillars" 
-            :key="idx" 
-            class="pillar-card liquid-card"
-          >
-            <div class="pillar-icon">{{ pillar.icon }}</div>
-            <h3 class="pillar-title">{{ t(pillar.title) }}</h3>
-            <p class="pillar-desc">{{ t(pillar.description) }}</p>
+        <!-- Swiper Container for Pillars -->
+        <div class="swiper about-swiper">
+          <div class="swiper-wrapper">
+            <div 
+              v-for="(pillar, idx) in config.about.pillars" 
+              :key="idx" 
+              class="swiper-slide"
+            >
+              <div class="pillar-card liquid-card">
+                <div class="pillar-icon">{{ pillar.icon }}</div>
+                <h3 class="pillar-title">{{ t(pillar.title) }}</h3>
+                <p class="pillar-desc">{{ t(pillar.description) }}</p>
+              </div>
+            </div>
+          </div>
+          <!-- Pagination -->
+          <div class="swiper-pagination about-pagination"></div>
+          <!-- Controls -->
+          <div class="swiper-controls">
+            <button type="button" class="swiper-btn-prev about-prev" aria-label="Previous">←</button>
+            <button type="button" class="swiper-btn-next about-next" aria-label="Next">→</button>
           </div>
         </div>
       </section>
 
-      <!-- 4. Core Capabilities & Services -->
+      <!-- 4. Core Capabilities & Services (Swiper Horizontal Carousel) -->
       <section id="services" class="section-container">
         <div class="section-header">
           <span class="section-tag">{{ t({ vi: '✦ Năng Lực Cốt Lõi', en: '✦ Core Capabilities' }) }}</span>
@@ -225,28 +243,40 @@
           </p>
         </div>
 
-        <div class="services-grid">
-          <div 
-            v-for="(service, idx) in config.services" 
-            :key="idx" 
-            class="service-card liquid-card"
-          >
-            <div class="service-header">
-              <span class="service-icon">{{ service.icon }}</span>
-              <span class="service-badge">{{ service.badge }}</span>
+        <!-- Swiper Container for Services -->
+        <div class="swiper services-swiper">
+          <div class="swiper-wrapper">
+            <div 
+              v-for="(service, idx) in config.services" 
+              :key="idx" 
+              class="swiper-slide"
+            >
+              <div class="service-card liquid-card">
+                <div class="service-header">
+                  <span class="service-icon">{{ service.icon }}</span>
+                  <span class="service-badge">{{ service.badge }}</span>
+                </div>
+                <h3 class="service-title">{{ t(service.title) }}</h3>
+                <p class="service-desc">{{ t(service.description) }}</p>
+                <ul class="service-highlights">
+                  <li v-for="(highlight, hIdx) in service.highlights" :key="hIdx">
+                    {{ t(highlight) }}
+                  </li>
+                </ul>
+              </div>
             </div>
-            <h3 class="service-title">{{ t(service.title) }}</h3>
-            <p class="service-desc">{{ t(service.description) }}</p>
-            <ul class="service-highlights">
-              <li v-for="(highlight, hIdx) in service.highlights" :key="hIdx">
-                {{ t(highlight) }}
-              </li>
-            </ul>
+          </div>
+          <!-- Pagination -->
+          <div class="swiper-pagination services-pagination"></div>
+          <!-- Controls -->
+          <div class="swiper-controls">
+            <button type="button" class="swiper-btn-prev services-prev" aria-label="Previous">←</button>
+            <button type="button" class="swiper-btn-next services-next" aria-label="Next">→</button>
           </div>
         </div>
       </section>
 
-      <!-- 5. Featured Products: Upcoming Games Showcase -->
+      <!-- 5. Featured Products: Upcoming Games Showcase (Swiper Horizontal Carousel) -->
       <section id="games" class="section-container">
         <div class="section-header">
           <span class="section-tag">{{ t(config.upcomingGamesSection.tag) }}</span>
@@ -268,195 +298,156 @@
           </button>
         </div>
 
-        <!-- Game Cards Grid -->
-        <div class="game-grid">
-          <div 
-            v-for="game in filteredGames" 
-            :key="game.id" 
-            class="game-card liquid-card"
-            @click="openGameModal(game)"
-          >
-            <!-- Card Banner with Animated Coming Soon Badge -->
-            <div class="game-banner-box">
-              <div class="coming-badge">
-                <span class="pulse-dot"></span>
-                <span>{{ t(game.badgeText) }}</span>
-              </div>
-              <img 
-                :src="game.coverImage" 
-                :alt="t(game.title)" 
-                class="game-banner-img"
-                loading="lazy"
-                onerror="this.style.display='none'"
+        <!-- Swiper Container for Games -->
+        <div class="swiper games-swiper">
+          <div class="swiper-wrapper">
+            <div 
+              v-for="game in filteredGames" 
+              :key="game.id" 
+              class="swiper-slide"
+            >
+              <div 
+                class="game-card liquid-card"
+                @click="openGameModal(game)"
               >
-            </div>
+                <!-- Card Banner with Animated Coming Soon Badge -->
+                <div class="game-banner-box">
+                  <div class="coming-badge">
+                    <span class="pulse-dot"></span>
+                    <span>{{ t(game.badgeText) }}</span>
+                  </div>
+                  <img 
+                    :src="game.coverImage" 
+                    :alt="t(game.title)" 
+                    class="game-banner-img"
+                    loading="lazy"
+                    onerror="this.style.display='none'"
+                  >
+                </div>
 
-            <!-- Card Body -->
-            <div class="game-body">
-              <div class="game-tags">
-                <span v-for="(plat, pIdx) in game.platforms" :key="pIdx" class="game-platform-tag">
-                  {{ plat }}
-                </span>
-              </div>
-              <h3 class="game-title">{{ t(game.title) }}</h3>
-              <div class="game-genre">{{ t(game.genre) }}</div>
-              <p class="game-desc">{{ t(game.shortDesc) }}</p>
-              
-              <div class="game-footer">
-                <span class="game-release">{{ t(game.expectedRelease) }}</span>
-                <button type="button" class="game-card-btn">
-                  {{ t(config.upcomingGamesSection.btnDetails) }} →
-                </button>
+                <!-- Card Body -->
+                <div class="game-body">
+                  <div class="game-tags">
+                    <span v-for="(plat, pIdx) in game.platforms" :key="pIdx" class="game-platform-tag">
+                      {{ plat }}
+                    </span>
+                  </div>
+                  <h3 class="game-title">{{ t(game.title) }}</h3>
+                  <div class="game-genre">{{ t(game.genre) }}</div>
+                  <p class="game-desc">{{ t(game.shortDesc) }}</p>
+                  
+                  <div class="game-footer">
+                    <span class="game-release">{{ t(game.expectedRelease) }}</span>
+                    <button type="button" class="game-card-btn">
+                      {{ t(config.upcomingGamesSection.btnDetails) }} →
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
+          </div>
+          <!-- Pagination -->
+          <div class="swiper-pagination games-pagination"></div>
+          <!-- Controls -->
+          <div class="swiper-controls">
+            <button type="button" class="swiper-btn-prev games-prev" aria-label="Previous">←</button>
+            <button type="button" class="swiper-btn-next games-next" aria-label="Next">→</button>
           </div>
         </div>
       </section>
 
-      <!-- 6. Tech Stack & Strategic Ecosystem -->
-      <section id="partners" class="section-container">
+      <!-- 6. Tech Stack & Tools (Swiper Horizontal Carousel) -->
+      <section id="tech-stack" class="section-container">
         <div class="section-header">
-          <span class="section-tag">{{ t({ vi: '✦ Hệ Sinh Thái Công Nghệ', en: '✦ Tech Ecosystem' }) }}</span>
-          <h2 class="section-title">{{ t({ vi: 'Công Nghệ Nền Tảng & Đối Tác', en: 'Core Technologies & Toolsets' }) }}</h2>
+          <span class="section-tag">{{ t(config.techStackSection?.tag || { vi: '✦ Công Nghệ', en: '✦ Technology' }) }}</span>
+          <h2 class="section-title">{{ t(config.techStackSection?.title || { vi: 'Công Nghệ Nền Tảng & Đối Tác', en: 'Core Technologies & Toolsets' }) }}</h2>
           <p class="section-subtitle">
-            {{ t({ 
+            {{ t(config.techStackSection?.subtitle || { 
               vi: 'Các tiêu chuẩn công nghệ hàng đầu thế giới được TPZTech Studio làm chủ và áp dụng', 
               en: 'Industry-standard engines and cloud infrastructure mastered by TPZTech Studio' 
             }) }}
           </p>
         </div>
 
-        <div class="tech-grid">
-          <div 
-            v-for="(tech, idx) in config.techStack" 
-            :key="idx" 
-            class="tech-chip liquid-glass"
-          >
-            <div class="tech-name">{{ tech.name }}</div>
-            <div class="tech-role">{{ tech.role }}</div>
+        <!-- Swiper Container for Tech Stack -->
+        <div class="swiper tech-swiper">
+          <div class="swiper-wrapper">
+            <div 
+              v-for="(tech, idx) in config.techStack" 
+              :key="idx" 
+              class="swiper-slide"
+            >
+              <div class="tech-chip liquid-glass">
+                <div class="tech-icon">{{ tech.icon || '⚡' }}</div>
+                <div class="tech-name">{{ tech.name }}</div>
+                <div class="tech-role">{{ tech.role }}</div>
+              </div>
+            </div>
+          </div>
+          <!-- Pagination -->
+          <div class="swiper-pagination tech-pagination"></div>
+          <!-- Controls -->
+          <div class="swiper-controls">
+            <button type="button" class="swiper-btn-prev tech-prev" aria-label="Previous">←</button>
+            <button type="button" class="swiper-btn-next tech-next" aria-label="Next">→</button>
           </div>
         </div>
       </section>
 
-      <!-- 7. Contact Section -->
-      <section id="contact" class="section-container">
+      <!-- 7. Strategic Partners Section (Swiper Horizontal Carousel) -->
+      <section id="partners" class="section-container">
         <div class="section-header">
-          <span class="section-tag">{{ t(config.contact.tag) }}</span>
-          <h2 class="section-title">{{ t(config.contact.title) }}</h2>
-          <p class="section-subtitle">{{ t(config.contact.subtitle) }}</p>
+          <span class="section-tag">{{ t(config.strategicPartnersSection.tag) }}</span>
+          <h2 class="section-title">{{ t(config.strategicPartnersSection.title) }}</h2>
+          <p class="section-subtitle">{{ t(config.strategicPartnersSection.subtitle) }}</p>
         </div>
 
-        <div class="contact-grid">
-          <!-- Contact Info Card -->
-          <div class="contact-info-card liquid-card">
-            <div class="contact-item">
-              <div class="contact-item-icon">📍</div>
-              <div>
-                <div class="contact-item-label">{{ t({ vi: 'Trụ Sở Chính', en: 'Headquarters' }) }}</div>
-                <div class="contact-item-val">{{ t(config.company.address) }}</div>
-              </div>
-            </div>
-
-            <div class="contact-item">
-              <div class="contact-item-icon">✉️</div>
-              <div>
-                <div class="contact-item-label">{{ t({ vi: 'Hộp Thư Điện Tử', en: 'Email Inquiries' }) }}</div>
-                <div class="contact-item-val">
-                  <a :href="'mailto:' + config.company.email" style="color: inherit; text-decoration: none;">
-                    {{ config.company.email }}
-                  </a>
+        <!-- Swiper Container for Partners -->
+        <div class="swiper partners-swiper">
+          <div class="swiper-wrapper">
+            <div 
+              v-for="partner in config.strategicPartners" 
+              :key="partner.id" 
+              class="swiper-slide"
+            >
+              <div class="partner-card liquid-card">
+                <div class="partner-card-header">
+                  <div class="partner-visual">
+                    <img v-if="partner.logo" :src="partner.logo" :alt="partner.name" class="partner-logo-img">
+                    <span v-else class="partner-icon">{{ partner.icon }}</span>
+                  </div>
+                  <span class="partner-badge">{{ partner.badge }}</span>
                 </div>
-              </div>
-            </div>
-
-            <div class="contact-item">
-              <div class="contact-item-icon">📞</div>
-              <div>
-                <div class="contact-item-label">{{ t({ vi: 'Đường Dây Nóng', en: 'Hotline' }) }}</div>
-                <div class="contact-item-val">
-                  <a :href="'tel:' + config.company.hotline" style="color: inherit; text-decoration: none;">
-                    {{ config.company.hotline }}
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="contact-item">
-              <div class="contact-item-icon">⏱️</div>
-              <div>
-                <div class="contact-item-label">{{ t({ vi: 'Thời Gian Làm Việc', en: 'Working Hours' }) }}</div>
-                <div class="contact-item-val">{{ t(config.company.workingHours) }}</div>
+                <h3 class="partner-title">{{ partner.name }}</h3>
+                <div class="partner-role">{{ t(partner.role) }}</div>
+                <p class="partner-desc">{{ t(partner.description) }}</p>
+                <ul class="partner-highlights">
+                  <li v-for="(hl, hIdx) in partner.highlights" :key="hIdx">
+                    {{ t(hl) }}
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
-
-          <!-- Interactive Contact Form -->
-          <form class="contact-form liquid-card" @submit.prevent="handleContactSubmit">
-            <div class="form-group">
-              <label class="form-label">{{ t(config.contact.form.nameLabel) }}</label>
-              <input 
-                type="text" 
-                v-model="contactForm.name" 
-                :placeholder="t(config.contact.form.namePlaceholder)" 
-                class="form-input" 
-                required
-              >
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">{{ t(config.contact.form.emailLabel) }}</label>
-              <input 
-                type="email" 
-                v-model="contactForm.email" 
-                :placeholder="t(config.contact.form.emailPlaceholder)" 
-                class="form-input" 
-                required
-              >
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">{{ t(config.contact.form.serviceLabel) }}</label>
-              <select v-model="contactForm.service" class="form-select">
-                <option 
-                  v-for="opt in config.contact.form.serviceOptions" 
-                  :key="opt.id" 
-                  :value="opt.id"
-                >
-                  {{ t(opt.label) }}
-                </option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">{{ t(config.contact.form.messageLabel) }}</label>
-              <textarea 
-                v-model="contactForm.message" 
-                :placeholder="t(config.contact.form.messagePlaceholder)" 
-                class="form-textarea" 
-                required
-              ></textarea>
-            </div>
-
-            <button 
-              type="submit" 
-              class="liquid-btn-primary" 
-              :disabled="isSubmittingContact"
-              style="width: 100%; border-radius: 12px; margin-top: 0.5rem;"
-            >
-              {{ isSubmittingContact ? t({ vi: 'Đang gửi...', en: 'Sending...' }) : t(config.contact.form.submitBtn) }}
-            </button>
-          </form>
+          <!-- Pagination -->
+          <div class="swiper-pagination partners-pagination"></div>
+          <!-- Controls -->
+          <div class="swiper-controls" v-if="config.strategicPartners.length > 1">
+            <button type="button" class="swiper-btn-prev partners-prev" aria-label="Previous">←</button>
+            <button type="button" class="swiper-btn-next partners-next" aria-label="Next">→</button>
+          </div>
         </div>
       </section>
     </main>
 
-    <!-- 8. Corporate Footer (Tepaylink inspired compliance & elegance) -->
+    <!-- 8. Corporate Footer -->
     <footer class="site-footer liquid-glass" v-if="config">
       <div class="footer-top">
         <!-- Col 1: Company Profile -->
         <div>
           <div class="footer-brand">
-            <span style="color: var(--accent-cyan);">✦</span>
+            <img v-if="config.company.logo" :src="config.company.logo" :alt="config.company.shortName" class="nav-brand-img" style="height: 32px;">
+            <span v-else style="color: var(--accent-cyan);">✦</span>
             <span>{{ t(config.company.name) }}</span>
           </div>
           <p class="footer-desc">{{ t(config.footer.companyDesc) }}</p>
@@ -491,7 +482,7 @@
           </ul>
         </div>
 
-        <!-- Col 3: Address & Legal Notice -->
+        <!-- Col 3: Address & Info -->
         <div>
           <h4 class="footer-col-title">{{ t(config.footer.contactInfoTitle) }}</h4>
           <div class="footer-address-info">

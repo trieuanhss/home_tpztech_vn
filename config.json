@@ -5,13 +5,14 @@
       "en": "TPZTech Studio Co., Ltd."
     },
     "shortName": "TPZTech Studio",
+    "logo": "assets/logo-tpz.png",
     "slogan": {
       "vi": "Sản phẩm tạo uy tín • Khát vọng định hình tương lai số",
       "en": "Quality builds reputation • Shaping the future of digital experience"
     },
     "address": {
-      "vi": "Thành Phố Đồng Nai, Việt Nam",
-      "en": "Dong Nai City, Vietnam"
+      "vi": "Thành Phố Hà Nội, Việt Nam",
+      "en": "Hanoi City, Vietnam"
     },
     "email": "contact@tpztech.vn",
     "hotline": "(+84) 0988 123 456",
@@ -40,8 +41,8 @@
     { "id": "about", "label": { "vi": "Về TPZTech", "en": "About Us" }, "href": "#about" },
     { "id": "services", "label": { "vi": "Lĩnh vực", "en": "Services" }, "href": "#services" },
     { "id": "games", "label": { "vi": "Game Sắp Ra Mắt", "en": "Upcoming Games" }, "href": "#games", "isHighlight": true },
-    { "id": "partners", "label": { "vi": "Hệ sinh thái", "en": "Ecosystem" }, "href": "#partners" },
-    { "id": "contact", "label": { "vi": "Liên hệ", "en": "Contact" }, "href": "#contact" }
+    { "id": "tech-stack", "label": { "vi": "Công nghệ", "en": "Tech Stack" }, "href": "#tech-stack" },
+    { "id": "partners", "label": { "vi": "Đối tác chiến lược", "en": "Strategic Partners" }, "href": "#partners" }
   ],
   "hero": {
     "badge": {
@@ -57,16 +58,16 @@
       "en": "Shaping The Next Digital Future"
     },
     "description": {
-      "vi": "Công ty TNHH TPZTech Studio chuyên nghiên cứu, thiết kế phần mềm doanh nghiệp và phát triển các tựa game online đa nền tảng đột phá. Trụ sở tại Thành Phố Đồng Nai, Việt Nam.",
-      "en": "TPZTech Studio Co., Ltd. specializes in enterprise software solutions and breakthrough multi-platform online games. Headquartered in Dong Nai City, Vietnam."
+      "vi": "Công ty TNHH TPZTech Studio chuyên nghiên cứu, thiết kế phần mềm doanh nghiệp và phát triển các tựa game online đa nền tảng đột phá",
+      "en": "TPZTech Studio Co., Ltd. specializes in enterprise software solutions and breakthrough multi-platform online games"
     },
     "primaryCta": {
       "vi": "Khám phá Game Sắp Ra Mắt ↓",
       "en": "Explore Upcoming Games ↓"
     },
     "secondaryCta": {
-      "vi": "Hợp tác & Liên hệ",
-      "en": "Partner With Us"
+      "vi": "Đối tác chiến lược →",
+      "en": "Strategic Partners →"
     },
     "trustMetrics": [
       {
@@ -120,8 +121,8 @@
           "en": "Core Vision"
         },
         "description": {
-          "vi": "Trở thành studio công nghệ và phát triển game hàng đầu khu vực, kiến tạo các sản phẩm phần mềm chất lượng cao và hệ sinh thái game trực tuyến cuốn hút, vươn tầm từ Đồng Nai ra toàn quốc và quốc tế.",
-          "en": "To become a premier technology and game studio, delivering high-performance software and captivating online game ecosystems from Dong Nai to regional and global markets."
+          "vi": "Trở thành studio công nghệ và phát triển game hàng đầu khu vực, kiến tạo các sản phẩm phần mềm chất lượng cao và hệ sinh thái game trực tuyến cuốn hút, vươn tầm ra toàn quốc và quốc tế.",
+          "en": "To become a premier technology and game studio, delivering high-performance software and captivating online game ecosystems to regional and global markets."
         }
       },
       {
@@ -185,14 +186,14 @@
     },
     {
       "icon": "🎨",
-      "badge": "Apple Glass Style",
+      "badge": "Liquid Glass Style",
       "title": {
         "vi": "Thiết Kế UI/UX & Mỹ Thuật Số",
         "en": "UI/UX & Digital Art Design"
       },
       "description": {
-        "vi": "Kiến tạo trải nghiệm thị giác đột phá với ngôn ngữ Apple Liquid Glass, micro-animations tinh tế và tối ưu tương tác người dùng.",
-        "en": "Crafting next-gen visuals with Apple Liquid Glass aesthetics, refined micro-animations, and seamless user interaction design."
+        "vi": "Kiến tạo trải nghiệm thị giác đột phá với ngôn ngữ Liquid Glass, micro-animations tinh tế và tối ưu tương tác người dùng.",
+        "en": "Crafting next-gen visuals with Liquid Glass aesthetics, refined micro-animations, and seamless user interaction design."
       },
       "highlights": [
         { "vi": "Giao diện Glassmorphism độc bản", "en": "Bespoke Glassmorphism UI" },
@@ -392,44 +393,58 @@
     "preregisterBtn": { "vi": "Nhận vé thử nghiệm", "en": "Join Waitlist" },
     "closeBtn": { "vi": "Đóng", "en": "Close" }
   },
-  "techStack": [
-    { "name": "Unreal Engine 5", "role": "Next-Gen 3D Game Engine", "icon": "ue5" },
-    { "name": "Unity Technologies", "role": "Cross-Platform Game Development", "icon": "unity" },
-    { "name": "Vue.js & WebGL", "role": "Reactive Frontend & Web Games", "icon": "vue" },
-    { "name": "Node.js & Go", "role": "High-Concurrency Game Servers", "icon": "backend" },
-    { "name": "Cloud Native (AWS/GCP)", "role": "Scalable Infrastructure & CDN", "icon": "cloud" },
-    { "name": "Apple Metal & DirectX 12", "role": "Ultra-Low Latency Rendering", "icon": "graphics" }
-  ],
-  "contact": {
-    "tag": {
-      "vi": "✦ Kết Nối & Hợp Tác",
-      "en": "✦ Connect & Collaborate"
-    },
-    "title": {
-      "vi": "Khởi Đầu Dự Án Cùng TPZTech Studio",
-      "en": "Start Your Next Journey With TPZTech Studio"
-    },
+  "techStackSection": {
+    "tag": { "vi": "✦ Công Nghệ Tiên Tiến", "en": "✦ Advanced Technologies" },
+    "title": { "vi": "Công Nghệ Nền Tảng & Đối Tác", "en": "Core Technologies & Toolsets" },
     "subtitle": {
-      "vi": "Bạn là nhà phát hành game, đối tác doanh nghiệp hay muốn thảo luận về ý tưởng phần mềm đột phá? Hãy liên hệ với chúng tôi ngay hôm nay.",
-      "en": "Are you a publisher, business partner, or innovator seeking breakthrough software & game solutions? Reach out to us today."
-    },
-    "form": {
-      "nameLabel": { "vi": "Họ và tên của bạn", "en": "Your Full Name" },
-      "namePlaceholder": { "vi": "Nguyễn Văn A", "en": "John Doe" },
-      "emailLabel": { "vi": "Địa chỉ Email", "en": "Email Address" },
-      "emailPlaceholder": { "vi": "name@example.com", "en": "name@example.com" },
-      "serviceLabel": { "vi": "Nhu cầu quan tâm", "en": "Subject of Interest" },
-      "serviceOptions": [
-        { "id": "game", "label": { "vi": "Hợp tác phát hành / Đồng phát triển Game", "en": "Game Publishing & Co-development" } },
-        { "id": "software", "label": { "vi": "Thiết kế & Lập trình Phần mềm Doanh nghiệp", "en": "Custom Enterprise Software" } },
-        { "id": "uiux", "label": { "vi": "Thiết kế UI/UX & Đồ họa phong cách Glass", "en": "Glassmorphism UI/UX Design" } },
-        { "id": "other", "label": { "vi": "Hợp tác khác", "en": "Other Inquiries" } }
-      ],
-      "messageLabel": { "vi": "Nội dung lời nhắn", "en": "Your Message" },
-      "messagePlaceholder": { "vi": "Chia sẻ thêm về mục tiêu và mong muốn của bạn...", "en": "Tell us about your project goals..." },
-      "submitBtn": { "vi": "Gửi Lời Nhắn Hợp Tác →", "en": "Send Partnership Request →" }
+      "vi": "Các tiêu chuẩn công nghệ hàng đầu thế giới được TPZTech Studio làm chủ và áp dụng",
+      "en": "Industry-standard engines and cloud infrastructure mastered by TPZTech Studio"
     }
   },
+  "techStack": [
+    { "name": "Unreal Engine 5", "role": "Next-Gen 3D Game Engine", "icon": "⚡" },
+    { "name": "Unity Technologies", "role": "Cross-Platform Game Development", "icon": "🕹️" },
+    { "name": "Vue.js & WebGL", "role": "Reactive Frontend & Web Games", "icon": "🌐" },
+    { "name": "Node.js & Go", "role": "High-Concurrency Game Servers", "icon": "💻" },
+    { "name": "Cloud Native (AWS/GCP)", "role": "Scalable Infrastructure & CDN", "icon": "☁️" },
+    { "name": "Metal & DirectX 12", "role": "Ultra-Low Latency Rendering", "icon": "🎮" }
+  ],
+  "strategicPartnersSection": {
+    "tag": {
+      "vi": "✦ Đối Tác Chiến Lược",
+      "en": "✦ Strategic Partners"
+    },
+    "title": {
+      "vi": "Đồng Hành & Hợp Tác Chiến Lược",
+      "en": "Strategic Partners & Co-Creators"
+    },
+    "subtitle": {
+      "vi": "Xây dựng mối quan hệ đối tác bền vững để kiến tạo nên những sản phẩm công nghệ và thế giới game chất lượng cao",
+      "en": "Building lasting alliances to craft premier technology solutions and high-octane gaming worlds"
+    }
+  },
+  "strategicPartners": [
+    {
+      "id": "tpz-gamestudio",
+      "name": "TPZ-GameStudio",
+      "logo": "assets/logo-tpz.png",
+      "role": {
+        "vi": "Đối Tác Đồng Phát Triển Game",
+        "en": "Game Co-Development Partner"
+      },
+      "badge": "Core Partner",
+      "icon": "🎮",
+      "description": {
+        "vi": "Đơn vị sáng tạo chuyên sâu về thiết kế ý tưởng, mỹ thuật game 3D, tối ưu hóa cơ chế điều khiển và phát triển gameplay cuốn hút.",
+        "en": "Specialized creative studio focused on concept art, 3D game visuals, mechanics optimization, and immersive gameplay development."
+      },
+      "highlights": [
+        { "vi": "Thiết kế đồ họa & bối cảnh 3D", "en": "3D Concept Art & Worldbuilding" },
+        { "vi": "Phát triển cơ chế gameplay thế hệ mới", "en": "Next-gen Gameplay Mechanics" },
+        { "vi": "Đồng vận hành & thử nghiệm Alpha/Beta", "en": "Alpha/Beta Testing & Co-Publishing" }
+      ]
+    }
+  ],
   "footer": {
     "companyDesc": {
       "vi": "Đơn vị chuyên sâu về thiết kế, nghiên cứu và phát triển phần mềm ứng dụng, hệ thống số hóa và sản xuất trò chơi trực tuyến thế hệ mới tại Việt Nam.",
@@ -448,18 +463,14 @@
       "en": "© 2026 TPZTech Studio Co., Ltd. All rights reserved."
     },
     "builtWith": {
-      "vi": "Phát triển với HTML5, CSS3, Vue 3 & Phong cách Apple Liquid Glass",
-      "en": "Crafted with HTML5, CSS3, Vue 3 & Apple Liquid Glass Aesthetics"
+      "vi": "Native engine platform",
+      "en": "Native engine platform"
     }
   },
   "toasts": {
     "preregisterSuccess": {
       "vi": "🎉 Cảm ơn bạn! Chúng tôi đã ghi nhận email đăng ký thử nghiệm game.",
       "en": "🎉 Thank you! Your pre-registration for early game access is confirmed."
-    },
-    "contactSuccess": {
-      "vi": "✉️ Cảm ơn bạn! Đội ngũ TPZTech Studio đã nhận được lời nhắn và sẽ phản hồi sớm nhất.",
-      "en": "✉️ Thank you! TPZTech Studio team has received your message and will respond shortly."
     },
     "validationError": {
       "vi": "Vui lòng điền đầy đủ các thông tin hợp lệ.",
