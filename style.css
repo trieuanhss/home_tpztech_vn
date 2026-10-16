@@ -1800,37 +1800,135 @@ body {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* 17. Responsive Breakpoints & Clean Hamburger Drawer */
-@media (max-width: 600px) {
-  .liquid-nav {
-    padding: 6px 12px;
-  }
-  .nav-controls {
-    gap: 6px;
-  }
-  .dropdown-trigger-btn {
-    height: 32px;
-    padding: 0 10px;
-    font-size: 0.76rem;
-    gap: 5px;
-  }
-  .dropdown-icon {
-    font-size: 0.85rem;
-  }
-  .dropdown-label {
-    font-size: 0.76rem;
-  }
-  .dropdown-chevron-svg {
-    width: 8px;
-    height: 5px;
-  }
-  .mobile-menu-btn {
-    width: 34px;
-    height: 32px;
-    border-radius: 9999px;
-  }
+/* Drawer Theme & Language Controls */
+.drawer-controls-box {
+  margin-top: 1rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 16px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
 }
 
+.drawer-control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.drawer-control-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.control-label-icon {
+  font-size: 0.85rem;
+}
+
+.drawer-segmented-pills {
+  display: flex;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 3px;
+  gap: 4px;
+}
+
+[data-theme="light"] .drawer-segmented-pills {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.drawer-pill-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 8px 4px;
+  border-radius: 9px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.drawer-pill-btn:hover {
+  color: var(--text-primary);
+  background: var(--glass-bg-hover);
+}
+
+.drawer-pill-btn.active {
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.3), rgba(139, 92, 246, 0.3));
+  border-color: rgba(56, 189, 248, 0.5);
+  box-shadow: 0 2px 10px rgba(56, 189, 248, 0.25);
+  color: var(--accent-cyan);
+  font-weight: 700;
+}
+
+/* Footer Theme Selector */
+.footer-theme-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-theme-label {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.footer-theme-pills {
+  display: inline-flex;
+  align-items: center;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 9999px;
+  padding: 3px;
+  gap: 3px;
+}
+
+.footer-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.footer-pill-btn:hover {
+  color: var(--text-primary);
+}
+
+.footer-pill-btn.active {
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.3), rgba(139, 92, 246, 0.3));
+  border-color: rgba(56, 189, 248, 0.45);
+  color: var(--accent-cyan);
+  font-weight: 700;
+}
+
+/* 17. Responsive Breakpoints & Mobile Optimization */
 @media (max-width: 860px) {
   .nav-links {
     display: none !important;
@@ -1843,14 +1941,112 @@ body {
 }
 
 @media (max-width: 768px) {
+  /* Hide theme dropdown on header for all mobile screens to prevent crowding */
+  .header-theme-dropdown {
+    display: none !important;
+  }
+
+  .nav-container {
+    width: calc(100% - 24px);
+    max-width: 100%;
+    top: 0.75rem;
+  }
+
+  .liquid-nav {
+    padding: 6px 14px;
+    gap: 8px;
+    justify-content: space-between;
+  }
+
   .hero-title { font-size: 2.2rem; }
   .hero-desc { font-size: 1rem; }
   .section-title { font-size: 1.8rem; }
   .footer-top { grid-template-columns: 1fr; gap: 2rem; }
-  .footer-bottom { flex-direction: column; text-align: center; }
-  .site-footer { padding: 2rem 1.25rem 1rem; }
+  .footer-bottom { 
+    flex-direction: column; 
+    text-align: center; 
+    gap: 1.25rem; 
+  }
+  .footer-theme-selector { 
+    justify-content: center; 
+  }
+  .site-footer { padding: 2rem 1.25rem 1.5rem; }
 }
 
 @media (max-width: 480px) {
   .hero-title { font-size: 1.8rem; }
+
+  .nav-container {
+    width: calc(100% - 16px);
+    top: 0.5rem;
+  }
+
+  .liquid-nav {
+    padding: 6px 10px;
+    gap: 6px;
+  }
+
+  .nav-brand {
+    gap: 8px;
+    font-size: 0.95rem;
+    min-width: 0;
+  }
+
+  .nav-brand-img {
+    height: 28px;
+    max-width: 36px;
+  }
+
+  .nav-brand span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 140px;
+  }
+
+  .nav-controls {
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .dropdown-trigger-btn {
+    height: 34px;
+    padding: 0 9px;
+    font-size: 0.78rem;
+    gap: 4px;
+  }
+
+  .mobile-menu-btn {
+    width: 36px;
+    height: 34px;
+    border-radius: 10px;
+  }
+}
+
+/* Extra compact screens (Honor Magic V3 outer screen ~370-400px) */
+@media (max-width: 390px) {
+  .liquid-nav {
+    padding: 5px 8px;
+    gap: 4px;
+  }
+
+  .nav-brand span {
+    font-size: 0.88rem;
+    max-width: 110px;
+  }
+
+  .dropdown-trigger-btn {
+    padding: 0 7px;
+    height: 32px;
+    font-size: 0.75rem;
+  }
+
+  .mobile-menu-btn {
+    width: 32px;
+    height: 32px;
+  }
+
+  .nav-controls {
+    gap: 4px;
+  }
 }

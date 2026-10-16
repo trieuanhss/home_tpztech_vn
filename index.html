@@ -120,8 +120,8 @@
 
         <!-- Controls: Theme, Language & Mobile Toggle -->
         <div class="nav-controls">
-          <!-- Custom Glass Theme Dropdown -->
-          <div class="custom-dropdown">
+          <!-- Custom Glass Theme Dropdown (Hidden on mobile via CSS, moved to sidebar & footer) -->
+          <div class="custom-dropdown header-theme-dropdown">
             <button 
               type="button" 
               class="dropdown-trigger-btn" 
@@ -252,6 +252,71 @@
           </a>
         </li>
       </ul>
+
+      <!-- Theme & Language Controls in Sidebar Drawer -->
+      <div class="drawer-controls-box">
+        <div class="drawer-control-group">
+          <div class="drawer-control-label">
+            <span class="control-label-icon">🎨</span>
+            <span>{{ t({ vi: 'Chế độ giao diện', en: 'Appearance' }) }}</span>
+          </div>
+          <div class="drawer-segmented-pills">
+            <button 
+              type="button" 
+              class="drawer-pill-btn" 
+              :class="{ 'active': theme === 'dark' }" 
+              @click="selectTheme('dark')"
+            >
+              <span>🌙</span>
+              <span>{{ t(config?.themeLabels?.dark) }}</span>
+            </button>
+            <button 
+              type="button" 
+              class="drawer-pill-btn" 
+              :class="{ 'active': theme === 'light' }" 
+              @click="selectTheme('light')"
+            >
+              <span>☀️</span>
+              <span>{{ t(config?.themeLabels?.light) }}</span>
+            </button>
+            <button 
+              type="button" 
+              class="drawer-pill-btn" 
+              :class="{ 'active': theme === 'auto' }" 
+              @click="selectTheme('auto')"
+            >
+              <span>⚡</span>
+              <span>{{ t(config?.themeLabels?.auto) }}</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="drawer-control-group">
+          <div class="drawer-control-label">
+            <span class="control-label-icon">🌐</span>
+            <span>{{ t({ vi: 'Ngôn ngữ', en: 'Language' }) }}</span>
+          </div>
+          <div class="drawer-segmented-pills lang-pills">
+            <button 
+              type="button" 
+              class="drawer-pill-btn" 
+              :class="{ 'active': lang === 'vi' }" 
+              @click="selectLang('vi')"
+            >
+              <span>Việt Nam</span>
+            </button>
+            <button 
+              type="button" 
+              class="drawer-pill-btn" 
+              :class="{ 'active': lang === 'en' }" 
+              @click="selectLang('en')"
+            >
+              <span>English</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
       <div class="drawer-footer">
         <div class="drawer-contact-mini">
           <p><strong>Hotline:</strong> {{ config?.company?.hotline }}</p>
@@ -598,6 +663,41 @@
       <!-- Footer Bottom Bar -->
       <div class="footer-bottom">
         <div>{{ t(config.footer.copyright) }}</div>
+
+        <!-- Footer Theme Switcher -->
+        <div class="footer-theme-selector">
+          <span class="footer-theme-label">{{ t({ vi: 'Giao diện:', en: 'Theme:' }) }}</span>
+          <div class="footer-theme-pills">
+            <button 
+              type="button" 
+              class="footer-pill-btn" 
+              :class="{ 'active': theme === 'dark' }"
+              @click="selectTheme('dark')"
+              :title="t(config?.themeLabels?.dark)"
+            >
+              🌙 <span>{{ t(config?.themeLabels?.dark) }}</span>
+            </button>
+            <button 
+              type="button" 
+              class="footer-pill-btn" 
+              :class="{ 'active': theme === 'light' }"
+              @click="selectTheme('light')"
+              :title="t(config?.themeLabels?.light)"
+            >
+              ☀️ <span>{{ t(config?.themeLabels?.light) }}</span>
+            </button>
+            <button 
+              type="button" 
+              class="footer-pill-btn" 
+              :class="{ 'active': theme === 'auto' }"
+              @click="selectTheme('auto')"
+              :title="t(config?.themeLabels?.auto)"
+            >
+              ⚡ <span>{{ t(config?.themeLabels?.auto) }}</span>
+            </button>
+          </div>
+        </div>
+
         <div>{{ t(config.footer.builtWith) }}</div>
       </div>
     </footer>
