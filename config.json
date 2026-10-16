@@ -5,7 +5,7 @@
       "en": "TPZTech Studio Co., Ltd."
     },
     "shortName": "TPZTech Studio",
-    "logo": "assets/logo-tpz.png",
+    "logo": "assets/logo-tpz.svg",
     "slogan": {
       "vi": "Sản phẩm tạo uy tín • Khát vọng định hình tương lai số",
       "en": "Quality builds reputation • Shaping the future of digital experience"
@@ -427,7 +427,7 @@
     {
       "id": "tpz-gamestudio",
       "name": "TPZ-GameStudio",
-      "logo": "assets/logo-tpz.png",
+      "logo": "assets/logo-tpz.svg",
       "role": {
         "vi": "Đối Tác Đồng Phát Triển Game",
         "en": "Game Co-Development Partner"
@@ -442,6 +442,46 @@
         { "vi": "Thiết kế đồ họa & bối cảnh 3D", "en": "3D Concept Art & Worldbuilding" },
         { "vi": "Phát triển cơ chế gameplay thế hệ mới", "en": "Next-gen Gameplay Mechanics" },
         { "vi": "Đồng vận hành & thử nghiệm Alpha/Beta", "en": "Alpha/Beta Testing & Co-Publishing" }
+      ]
+    },
+    {
+      "id": "tpz-software",
+      "name": "TPZ-Software",
+      "logo": "assets/logo-tpz.svg",
+      "role": {
+        "vi": "Đối Tác Nền Tảng Kỹ Thuật Số",
+        "en": "Digital Systems & Platform Partner"
+      },
+      "badge": "Tech Partner",
+      "icon": "⚡",
+      "description": {
+        "vi": "Chuyên gia kỹ thuật phát triển kiến trúc máy chủ chịu tải cao, hạ tầng điện toán đám mây phân tán và giải pháp phần mềm doanh nghiệp tùy biến.",
+        "en": "Technical experts in high-concurrency server architectures, distributed cloud computing infrastructure, and customized enterprise software solutions."
+      },
+      "highlights": [
+        { "vi": "Kiến trúc Microservices & Real-time Server", "en": "Microservices & Real-time Server Architecture" },
+        { "vi": "Hạ tầng Cloud Native & Bảo mật cấp cao", "en": "Cloud Native & High-grade Security" },
+        { "vi": "Tối ưu hóa hiệu năng & Giảm độ trễ cực thấp", "en": "Performance Tuning & Ultra-low Latency" }
+      ]
+    },
+    {
+      "id": "tpz-marketing",
+      "name": "TPZ-Marketing",
+      "logo": "assets/logo-tpz.svg",
+      "role": {
+        "vi": "Đối Tác Phát Hành & Tăng Trưởng Toàn Cầu",
+        "en": "Global Publishing & Growth Partner"
+      },
+      "badge": "Growth Partner",
+      "icon": "🚀",
+      "description": {
+        "vi": "Đối tác chiến lược về tiếp thị đa kênh, xây dựng cộng đồng game thủ trung thành, chiến dịch ra mắt sản phẩm và tối ưu hóa chuyển đổi số.",
+        "en": "Strategic partner for omnichannel marketing, gamer community building, product launch campaigns, and digital conversion optimization."
+      },
+      "highlights": [
+        { "vi": "Phát hành & Chiến dịch User Acquisition (UA)", "en": "Publishing & User Acquisition (UA) Campaigns" },
+        { "vi": "Xây dựng & Nuôi dưỡng cộng đồng game thủ", "en": "Gamer Community Growth & Retention" },
+        { "vi": "Định vị thương hiệu & Quan hệ truyền thông số", "en": "Brand Positioning & Digital PR Alliances" }
       ]
     }
   ],

@@ -41,7 +41,7 @@ assert(html.includes('selectedGame'), 'Must have game modal bound to selectedGam
 assert(html.includes('toast.show'), 'Must have toast notification bound');
 
 // Theme & Lang switches
-assert(html.includes('setTheme'), 'Must have theme switch controls');
-assert(html.includes('setLang'), 'Must have language switch controls');
+assert(html.includes('selectTheme') || html.includes('setTheme'), 'Must have theme switch controls');
+assert(html.includes('selectLang') || html.includes('setLang'), 'Must have language switch controls');
 
 console.log('PASS: index.html markup and template bindings verified successfully!');

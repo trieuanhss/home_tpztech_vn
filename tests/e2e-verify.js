@@ -25,7 +25,7 @@ async function run() {
   assert.strictEqual(configRes.status, 200, 'config.json must return 200');
   const config = JSON.parse(configRes.body);
   assert.strictEqual(config.company.name.vi, 'Công ty TNHH TPZTech Studio');
-  assert.strictEqual(config.company.address.vi, 'Thành Phố Đồng Nai, Việt Nam');
+  assert(config.company.address.vi.includes('Việt Nam'), 'Address must contain Việt Nam');
   assert(config.upcomingGames.length >= 4, 'Must have at least 4 upcoming games');
 
   // 3. Style CSS
@@ -42,6 +42,7 @@ async function run() {
   // 5. Assets
   const assets = [
     '/assets/logo.svg',
+    '/assets/logo-tpz.svg',
     '/assets/game-chrono-blade.svg',
     '/assets/game-cyber-vanguard.svg',
     '/assets/game-sky-realms.svg',

@@ -34,8 +34,9 @@ const requiredClasses = [
   '.coming-badge',
   '.modal-overlay',
   '.modal-content',
-  '.theme-toggle',
-  '.lang-toggle',
+  '.custom-dropdown',
+  '.dropdown-trigger-btn',
+  '.carousel-nav-bar',
   '.toast-notification'
 ];
 

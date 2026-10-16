@@ -22,6 +22,10 @@ const app = createApp({
     const isMobileMenuOpen = ref(false);
     const activeSection = ref('home');
 
+    // Custom Glass Dropdowns
+    const isThemeDropdownOpen = ref(false);
+    const isLangDropdownOpen = ref(false);
+
     // Upcoming Games Filtering & Modal
     const activeCategory = ref('all');
     const selectedGame = ref(null);
@@ -83,6 +87,32 @@ const app = createApp({
       nextTick(() => {
         updateAllSwipers();
       });
+    };
+
+    // 4.1 Dropdown Actions
+    const toggleThemeDropdown = () => {
+      isThemeDropdownOpen.value = !isThemeDropdownOpen.value;
+      if (isThemeDropdownOpen.value) isLangDropdownOpen.value = false;
+    };
+
+    const toggleLangDropdown = () => {
+      isLangDropdownOpen.value = !isLangDropdownOpen.value;
+      if (isLangDropdownOpen.value) isThemeDropdownOpen.value = false;
+    };
+
+    const closeAllDropdowns = () => {
+      isThemeDropdownOpen.value = false;
+      isLangDropdownOpen.value = false;
+    };
+
+    const selectTheme = (newTheme) => {
+      setTheme(newTheme);
+      isThemeDropdownOpen.value = false;
+    };
+
+    const selectLang = (newLang) => {
+      setLang(newLang);
+      isLangDropdownOpen.value = false;
     };
 
     // 5. Games Filtering & Modal Methods
@@ -261,7 +291,9 @@ const app = createApp({
             spaceBetween: 24,
             grabCursor: true,
             breakpoints: {
-              768: { slidesPerView: 2, spaceBetween: 24 }
+              640: { slidesPerView: 1, spaceBetween: 20 },
+              768: { slidesPerView: 2, spaceBetween: 24 },
+              1100: { slidesPerView: 3, spaceBetween: 24 }
             },
             pagination: {
               el: '.partners-pagination',
@@ -338,9 +370,16 @@ const app = createApp({
         }
       };
       window.addEventListener('scroll', handleScroll, { passive: true });
+
+      // Click outside to close dropdowns
+      const handleDocClick = (e) => {
+        closeAllDropdowns();
+      };
+      document.addEventListener('click', handleDocClick);
     });
 
     onUnmounted(() => {
+      document.removeEventListener('click', closeAllDropdowns);
       if (systemThemeMediaQuery) {
         systemThemeMediaQuery.removeEventListener('change', handleSystemThemeChange);
       }
@@ -373,7 +412,14 @@ const app = createApp({
       handlePreregister,
       toggleMobileMenu,
       closeMobileMenu,
-      scrollToSection
+      scrollToSection,
+      isThemeDropdownOpen,
+      isLangDropdownOpen,
+      toggleThemeDropdown,
+      toggleLangDropdown,
+      closeAllDropdowns,
+      selectTheme,
+      selectLang
     };
   }
 });
