@@ -950,28 +950,66 @@ body {
 }
 
 /* 9. About (Pillars) Section */
+.about-swiper .swiper-slide {
+  justify-content: center;
+}
+
 .pillar-card {
-  padding: 2.2rem;
+  padding: 2.8rem 2.2rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  max-width: 680px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+@media (min-width: 1024px) {
+  .pillar-card {
+    max-width: 100%;
+    padding: 2.5rem 1.8rem;
+  }
 }
 
 .pillar-icon {
-  font-size: 2.2rem;
-  margin-bottom: 1.2rem;
+  width: 68px;
+  height: 68px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(139, 92, 246, 0.1));
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  box-shadow: 0 8px 24px rgba(56, 189, 248, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.1rem;
+  margin-bottom: 1.4rem;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.pillar-card:hover .pillar-icon {
+  transform: scale(1.1) translateY(-3px);
+  box-shadow: 0 14px 30px rgba(56, 189, 248, 0.35);
+  border-color: var(--accent-cyan);
 }
 
 .pillar-title {
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.85rem;
+  text-align: center;
+  letter-spacing: -0.01em;
 }
 
 .pillar-desc {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--text-secondary);
-  line-height: 1.65;
+  line-height: 1.7;
+  text-align: center;
+  max-width: 540px;
+  margin: 0 auto;
 }
 
 /* 10. Services Section */
