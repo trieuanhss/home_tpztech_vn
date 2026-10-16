@@ -103,7 +103,9 @@
               <span class="dropdown-icon" v-else-if="theme === 'light'">☀️</span>
               <span class="dropdown-icon" v-else>⚡</span>
               <span class="dropdown-label">{{ t(config?.themeLabels?.[theme]) }}</span>
-              <span class="dropdown-chevron" :class="{ 'open': isThemeDropdownOpen }">▾</span>
+              <svg class="dropdown-chevron-svg" :class="{ 'open': isThemeDropdownOpen }" viewBox="0 0 10 6" width="10" height="6" aria-hidden="true">
+                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
             </button>
             <div class="dropdown-menu liquid-glass" v-show="isThemeDropdownOpen" @click.stop>
               <button 
@@ -146,7 +148,9 @@
               :title="t({ vi: 'Chọn ngôn ngữ', en: 'Select Language' })"
             >
               <span class="dropdown-label">{{ lang === 'vi' ? 'VN' : 'EN' }}</span>
-              <span class="dropdown-chevron" :class="{ 'open': isLangDropdownOpen }">▾</span>
+              <svg class="dropdown-chevron-svg" :class="{ 'open': isLangDropdownOpen }" viewBox="0 0 10 6" width="10" height="6" aria-hidden="true">
+                <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              </svg>
             </button>
             <div class="dropdown-menu liquid-glass" v-show="isLangDropdownOpen" @click.stop>
               <button 
@@ -155,7 +159,7 @@
                 :class="{ 'active': lang === 'vi' }"
                 @click="selectLang('vi')"
               >
-                <span>VN</span>
+                <span>Việt Nam</span>
                 <span class="item-check" v-if="lang === 'vi'">✓</span>
               </button>
               <button 
@@ -164,7 +168,7 @@
                 :class="{ 'active': lang === 'en' }"
                 @click="selectLang('en')"
               >
-                <span>EN</span>
+                <span>English</span>
                 <span class="item-check" v-if="lang === 'en'">✓</span>
               </button>
             </div>

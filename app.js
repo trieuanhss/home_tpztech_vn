@@ -135,16 +135,24 @@ const app = createApp({
       });
     };
 
+    const updateBodyScrollLock = () => {
+      if (isMobileMenuOpen.value || selectedGame.value) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    };
+
     const openGameModal = (game) => {
       selectedGame.value = game;
       preregisterEmail.value = '';
-      document.body.style.overflow = 'hidden';
+      updateBodyScrollLock();
     };
 
     const closeGameModal = () => {
       selectedGame.value = null;
       preregisterEmail.value = '';
-      document.body.style.overflow = '';
+      updateBodyScrollLock();
     };
 
     const showToast = (message, duration = 3500) => {
@@ -172,10 +180,14 @@ const app = createApp({
     // 6. Navigation Interactions
     const toggleMobileMenu = () => {
       isMobileMenuOpen.value = !isMobileMenuOpen.value;
+      updateBodyScrollLock();
     };
 
     const closeMobileMenu = () => {
-      isMobileMenuOpen.value = false;
+      if (isMobileMenuOpen.value) {
+        isMobileMenuOpen.value = false;
+        updateBodyScrollLock();
+      }
     };
 
     const scrollToSection = (sectionId) => {
@@ -373,10 +385,12 @@ const app = createApp({
 
       loadConfig();
 
-      // Keyboard Esc to close modal
+      // Keyboard Esc to close modal, drawer & dropdowns
       const handleKeyDown = (e) => {
-        if (e.key === 'Escape' && selectedGame.value) {
-          closeGameModal();
+        if (e.key === 'Escape') {
+          if (selectedGame.value) closeGameModal();
+          if (isMobileMenuOpen.value) closeMobileMenu();
+          closeAllDropdowns();
         }
       };
       window.addEventListener('keydown', handleKeyDown);

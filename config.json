@@ -33,7 +33,7 @@
     "auto": { "vi": "Tự động", "en": "Auto" }
   },
   "langLabels": {
-    "vi": "Tiếng Việt",
+    "vi": "Việt Nam",
     "en": "English"
   },
   "navigation": [
@@ -68,8 +68,8 @@
       "en": "TPZTech Studio Co., Ltd. specializes in enterprise software solutions and breakthrough multi-platform online games"
     },
     "primaryCta": {
-      "vi": "Khám phá Game Sắp Ra Mắt ↓",
-      "en": "Explore Upcoming Games ↓"
+      "vi": "Khám phá Games ↓",
+      "en": "Explore Games ↓"
     },
     "secondaryCta": {
       "vi": "Đối tác chiến lược →",
@@ -408,12 +408,14 @@
     }
   },
   "techStack": [
+    { "name": "C++ Native Platform", "role": "High-Performance Core Systems", "icon": "⚙️" },
+    { "name": "Cocos Creator", "role": "2D/3D Multi-Platform Engine", "icon": "🎯" },
+    { "name": "Metal & DirectX 12", "role": "Ultra-Low Latency Rendering", "icon": "🎮" },
     { "name": "Unreal Engine 5", "role": "Next-Gen 3D Game Engine", "icon": "⚡" },
     { "name": "Unity Technologies", "role": "Cross-Platform Game Development", "icon": "🕹️" },
     { "name": "Vue.js & WebGL", "role": "Reactive Frontend & Web Games", "icon": "🌐" },
     { "name": "Node.js & Go", "role": "High-Concurrency Game Servers", "icon": "💻" },
-    { "name": "Cloud Native (AWS/GCP)", "role": "Scalable Infrastructure & CDN", "icon": "☁️" },
-    { "name": "Metal & DirectX 12", "role": "Ultra-Low Latency Rendering", "icon": "🎮" }
+    { "name": "Cloud Native (AWS/GCP)", "role": "Scalable Infrastructure & CDN", "icon": "☁️" }
   ],
   "strategicPartnersSection": {
     "tag": {
