@@ -15,7 +15,7 @@
       "en": "Hanoi City, Vietnam"
     },
     "email": "contact@tpztech.vn",
-    "hotline": "(+84) 0988 123 456",
+    "hotline": "(+84) 0123 456 789",
     "workingHours": {
       "vi": "Thứ 2 - Thứ 6: 08:30 - 17:30",
       "en": "Mon - Fri: 08:30 - 17:30"
@@ -46,7 +46,7 @@
     { "id": "home", "label": { "vi": "Trang chủ", "en": "Home" }, "href": "#home" },
     { "id": "about", "label": { "vi": "Về TPZTech", "en": "About Us" }, "href": "#about" },
     { "id": "services", "label": { "vi": "Lĩnh Vực Hoạt Động", "en": "Services" }, "href": "#services" },
-    { "id": "games", "label": { "vi": "Dự Án Game", "en": "Game Projects" }, "href": "#games", "isHighlight": true },
+    { "id": "games", "label": { "vi": "Dự Án Game", "en": "Game Projects" }, "href": "#games" },
     { "id": "tech-stack", "label": { "vi": "Công Nghệ Nền Tảng", "en": "Tech Stack" }, "href": "#tech-stack" },
     { "id": "partners", "label": { "vi": "Đối Tác Chiến Lược", "en": "Strategic Partners" }, "href": "#partners" }
   ],

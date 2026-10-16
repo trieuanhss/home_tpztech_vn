@@ -190,13 +190,31 @@ const app = createApp({
       }
     };
 
+    let isManualScrolling = false;
+    let manualScrollTimer = null;
+
     const scrollToSection = (sectionId) => {
+      activeSection.value = sectionId;
+      isManualScrolling = true;
+      if (manualScrollTimer) clearTimeout(manualScrollTimer);
+      manualScrollTimer = setTimeout(() => {
+        isManualScrolling = false;
+      }, 900);
+
       closeMobileMenu();
-      const el = document.getElementById(sectionId);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-        activeSection.value = sectionId;
-      }
+
+      setTimeout(() => {
+        const el = document.getElementById(sectionId);
+        if (el) {
+          const navOffset = 80;
+          const elementPosition = el.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - navOffset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 50);
     };
 
     // 7. Swiper Initializer using Swiper.js library
@@ -395,17 +413,24 @@ const app = createApp({
       };
       window.addEventListener('keydown', handleKeyDown);
 
-      // Section spy on scroll
+      // Section spy on scroll using getBoundingClientRect
       const handleScroll = () => {
+        if (isManualScrolling) return;
+
+        // If scrolled near bottom of page, activate last section (partners)
+        if ((window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 60)) {
+          activeSection.value = 'partners';
+          return;
+        }
+
         const sections = ['home', 'about', 'services', 'games', 'tech-stack', 'partners'];
-        const scrollPosition = window.scrollY + 200;
         for (const id of sections) {
           const el = document.getElementById(id);
           if (el) {
-            const top = el.offsetTop;
-            const height = el.offsetHeight;
-            if (scrollPosition >= top && scrollPosition < top + height) {
+            const rect = el.getBoundingClientRect();
+            if (rect.top <= 250 && rect.bottom >= 120) {
               activeSection.value = id;
+              break;
             }
           }
         }

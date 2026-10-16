@@ -214,11 +214,8 @@
           <a 
             :href="item.href" 
             class="drawer-link" 
-            :class="{ 
-              'active': activeSection === item.id,
-              'highlight': item.isHighlight
-            }"
-            @click.prevent="scrollToSection(item.id); closeMobileMenu();"
+            :class="{ 'active': activeSection === item.id }"
+            @click.prevent="scrollToSection(item.id)"
           >
             <span class="drawer-link-dot">✦</span>
             <span>{{ t(item.label) }}</span>
