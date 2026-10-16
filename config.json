@@ -5,7 +5,7 @@
       "en": "TPZTech Studio Co., Ltd."
     },
     "shortName": "TPZTech Studio",
-    "logo": "assets/logo-tpz.svg",
+    "logo": "assets/logo-tpz.png",
     "slogan": {
       "vi": "Sản phẩm tạo uy tín • Khát vọng định hình tương lai số",
       "en": "Quality builds reputation • Shaping the future of digital experience"
@@ -37,12 +37,18 @@
     "en": "English"
   },
   "navigation": [
+    { "id": "about", "label": { "vi": "Về TPZTech", "en": "About" }, "href": "#about" },
+    { "id": "services", "label": { "vi": "Lĩnh Vực", "en": "Services" }, "href": "#services" },
+    { "id": "games", "label": { "vi": "Games", "en": "Games" }, "href": "#games", "isHighlight": true },
+    { "id": "partners", "label": { "vi": "Đối tác", "en": "Partners" }, "href": "#partners" }
+  ],
+  "drawerNavigation": [
     { "id": "home", "label": { "vi": "Trang chủ", "en": "Home" }, "href": "#home" },
     { "id": "about", "label": { "vi": "Về TPZTech", "en": "About Us" }, "href": "#about" },
-    { "id": "services", "label": { "vi": "Lĩnh vực", "en": "Services" }, "href": "#services" },
-    { "id": "games", "label": { "vi": "Game Sắp Ra Mắt", "en": "Upcoming Games" }, "href": "#games", "isHighlight": true },
-    { "id": "tech-stack", "label": { "vi": "Công nghệ", "en": "Tech Stack" }, "href": "#tech-stack" },
-    { "id": "partners", "label": { "vi": "Đối tác chiến lược", "en": "Strategic Partners" }, "href": "#partners" }
+    { "id": "services", "label": { "vi": "Lĩnh Vực Hoạt Động", "en": "Services" }, "href": "#services" },
+    { "id": "games", "label": { "vi": "Dự Án Game", "en": "Game Projects" }, "href": "#games", "isHighlight": true },
+    { "id": "tech-stack", "label": { "vi": "Công Nghệ Nền Tảng", "en": "Tech Stack" }, "href": "#tech-stack" },
+    { "id": "partners", "label": { "vi": "Đối Tác Chiến Lược", "en": "Strategic Partners" }, "href": "#partners" }
   ],
   "hero": {
     "badge": {
@@ -204,12 +210,12 @@
   ],
   "upcomingGamesSection": {
     "tag": {
-      "vi": "🚀 Danh Mục Sản Phẩm",
-      "en": "🚀 Product Showcase"
+      "vi": "🚀 Danh Mục Trò Chơi",
+      "en": "🚀 Games Portfolio"
     },
     "title": {
-      "vi": "Dự Án Game Sắp Ra Mắt",
-      "en": "Upcoming Game Projects"
+      "vi": "Dự Án Game",
+      "en": "Game Projects"
     },
     "subtitle": {
       "vi": "Những thế giới kỳ ảo đầy kịch tính đang được đội ngũ TPZTech Studio ngày đêm ấp ủ và hoàn thiện",
@@ -427,7 +433,7 @@
     {
       "id": "tpz-gamestudio",
       "name": "TPZ-GameStudio",
-      "logo": "assets/logo-tpz.svg",
+      "logo": "assets/logo-tpz.png",
       "role": {
         "vi": "Đối Tác Đồng Phát Triển Game",
         "en": "Game Co-Development Partner"
@@ -447,7 +453,7 @@
     {
       "id": "tpz-software",
       "name": "TPZ-Software",
-      "logo": "assets/logo-tpz.svg",
+      "logo": "assets/logo-tpz.png",
       "role": {
         "vi": "Đối Tác Nền Tảng Kỹ Thuật Số",
         "en": "Digital Systems & Platform Partner"
@@ -467,7 +473,7 @@
     {
       "id": "tpz-marketing",
       "name": "TPZ-Marketing",
-      "logo": "assets/logo-tpz.svg",
+      "logo": "assets/logo-tpz.png",
       "role": {
         "vi": "Đối Tác Phát Hành & Tăng Trưởng Toàn Cầu",
         "en": "Global Publishing & Growth Partner"
@@ -489,10 +495,6 @@
     "companyDesc": {
       "vi": "Đơn vị chuyên sâu về thiết kế, nghiên cứu và phát triển phần mềm ứng dụng, hệ thống số hóa và sản xuất trò chơi trực tuyến thế hệ mới tại Việt Nam.",
       "en": "A specialized studio dedicated to cutting-edge software engineering, enterprise digitization, and next-generation online gaming in Vietnam."
-    },
-    "quickLinksTitle": {
-      "vi": "Liên Kết Nhanh",
-      "en": "Quick Navigation"
     },
     "contactInfoTitle": {
       "vi": "Thông Tin Trụ Sở",

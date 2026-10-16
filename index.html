@@ -145,7 +145,7 @@
               :aria-expanded="isLangDropdownOpen"
               :title="t({ vi: 'Chọn ngôn ngữ', en: 'Select Language' })"
             >
-              <span class="dropdown-label">{{ lang === 'vi' ? '🇻🇳 VI' : '🇬🇧 EN' }}</span>
+              <span class="dropdown-label">{{ lang === 'vi' ? 'VN' : 'EN' }}</span>
               <span class="dropdown-chevron" :class="{ 'open': isLangDropdownOpen }">▾</span>
             </button>
             <div class="dropdown-menu liquid-glass" v-show="isLangDropdownOpen" @click.stop>
@@ -155,7 +155,7 @@
                 :class="{ 'active': lang === 'vi' }"
                 @click="selectLang('vi')"
               >
-                <span>🇻🇳 Tiếng Việt</span>
+                <span>VN</span>
                 <span class="item-check" v-if="lang === 'vi'">✓</span>
               </button>
               <button 
@@ -164,13 +164,13 @@
                 :class="{ 'active': lang === 'en' }"
                 @click="selectLang('en')"
               >
-                <span>🇬🇧 English</span>
+                <span>EN</span>
                 <span class="item-check" v-if="lang === 'en'">✓</span>
               </button>
             </div>
           </div>
 
-          <!-- Mobile Hamburger Menu Button -->
+          <!-- Always Visible Hamburger Menu Button -->
           <button 
             type="button" 
             class="mobile-menu-btn" 
@@ -182,6 +182,52 @@
         </div>
       </nav>
     </header>
+
+    <!-- Slide-in Full Navigation Drawer (Accessible via Persistent Hamburger Button) -->
+    <div 
+      class="drawer-overlay" 
+      v-show="isMobileMenuOpen" 
+      @click="closeMobileMenu"
+      aria-hidden="true"
+    ></div>
+    <aside 
+      class="nav-drawer liquid-glass" 
+      :class="{ 'open': isMobileMenuOpen }" 
+      role="dialog" 
+      aria-label="Navigation Drawer"
+    >
+      <div class="drawer-header">
+        <div class="drawer-brand">
+          <img v-if="config && config.company.logo" :src="config.company.logo" :alt="config.company.shortName" class="nav-brand-img">
+          <div v-else class="nav-brand-icon">✦</div>
+          <span>{{ config ? config.company.shortName : 'TPZTech' }}</span>
+        </div>
+        <button type="button" class="drawer-close-btn" @click="closeMobileMenu" aria-label="Close menu">✕</button>
+      </div>
+      <div class="drawer-divider"></div>
+      <ul class="drawer-links">
+        <li v-for="item in (config ? config.drawerNavigation : [])" :key="'d-' + item.id">
+          <a 
+            :href="item.href" 
+            class="drawer-link" 
+            :class="{ 
+              'active': activeSection === item.id,
+              'highlight': item.isHighlight
+            }"
+            @click.prevent="scrollToSection(item.id); closeMobileMenu();"
+          >
+            <span class="drawer-link-dot">✦</span>
+            <span>{{ t(item.label) }}</span>
+          </a>
+        </li>
+      </ul>
+      <div class="drawer-footer">
+        <div class="drawer-contact-mini">
+          <p><strong>Hotline:</strong> {{ config?.company?.hotline }}</p>
+          <p><strong>Email:</strong> {{ config?.company?.email }}</p>
+        </div>
+      </div>
+    </aside>
 
     <!-- Main Content Area -->
     <main class="main-wrapper" v-if="config">
@@ -468,7 +514,7 @@
     <footer class="site-footer liquid-glass" v-if="config">
       <div class="footer-top">
         <!-- Col 1: Company Profile -->
-        <div>
+        <div class="footer-col-main">
           <div class="footer-brand">
             <img v-if="config.company.logo" :src="config.company.logo" :alt="config.company.shortName" class="nav-brand-img" style="height: 32px;">
             <span v-else style="color: var(--accent-cyan);">✦</span>
@@ -494,26 +540,14 @@
           </div>
         </div>
 
-        <!-- Col 2: Navigation Links -->
-        <div>
-          <h4 class="footer-col-title">{{ t(config.footer.quickLinksTitle) }}</h4>
-          <ul class="footer-links-list">
-            <li v-for="item in config.navigation" :key="'f-' + item.id">
-              <a :href="item.href" class="footer-link" @click.prevent="scrollToSection(item.id)">
-                • {{ t(item.label) }}
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Col 3: Address & Info -->
-        <div>
+        <!-- Col 2: Headquarters & Contact Info -->
+        <div class="footer-col-contact">
           <h4 class="footer-col-title">{{ t(config.footer.contactInfoTitle) }}</h4>
           <div class="footer-address-info">
             <p><strong>{{ t({ vi: 'Trụ sở chính:', en: 'Headquarters:' }) }}</strong> {{ t(config.company.address) }}</p>
             <p><strong>Email:</strong> {{ config.company.email }}</p>
             <p><strong>Hotline:</strong> {{ config.company.hotline }}</p>
-            <p style="margin-top: 0.5rem; font-size: 0.8rem; color: var(--text-muted);">
+            <p class="footer-slogan">
               {{ t(config.company.slogan) }}
             </p>
           </div>
@@ -546,83 +580,86 @@
           ✕
         </button>
 
-        <!-- Banner Preview with integrated fade and badge -->
-        <div class="modal-banner-wrap">
-          <img 
-            :src="selectedGame.coverImage" 
-            :alt="t(selectedGame.title)" 
-            class="modal-banner-img"
-          >
-          <div class="modal-banner-overlay"></div>
-          <div class="coming-badge modal-banner-badge">
-            <span class="pulse-dot"></span>
-            <span>{{ t(selectedGame.badgeText) }}</span>
-          </div>
-        </div>
-
-        <!-- Modal Header -->
-        <div class="modal-game-header">
-          <h3 class="modal-game-title">
-            {{ t(selectedGame.title) }}
-          </h3>
-          <div class="modal-game-genre">
-            {{ t(selectedGame.genre) }}
-          </div>
-        </div>
-
-        <!-- Game Story / Description -->
-        <p class="modal-game-desc">
-          {{ t(selectedGame.fullDesc) }}
-        </p>
-
-        <!-- Metadata Info -->
-        <div class="modal-meta-grid">
-          <div class="modal-meta-box">
-            <span class="modal-meta-label">{{ t(config.modalTexts.releaseDateLabel) }}</span>
-            <span class="modal-meta-val release-val">{{ t(selectedGame.expectedRelease) }}</span>
-          </div>
-          <div class="modal-meta-box">
-            <span class="modal-meta-label">{{ t(config.modalTexts.platformsLabel) }}</span>
-            <span class="modal-meta-val">{{ selectedGame.platforms.join(' • ') }}</span>
-          </div>
-        </div>
-
-        <!-- Key Highlights -->
-        <div class="modal-features-wrap">
-          <h4 class="modal-section-title">
-            {{ t(config.modalTexts.keyFeaturesLabel) }}
-          </h4>
-          <ul class="modal-features-list">
-            <li v-for="(feat, fIdx) in selectedGame.features" :key="fIdx">
-              <span class="feature-diamond">✦</span> {{ t(feat) }}
-            </li>
-          </ul>
-        </div>
-
-        <!-- Pre-register Form -->
-        <div class="modal-preregister-box">
-          <h4 class="modal-preregister-title">
-            {{ t(config.modalTexts.preregisterTitle) }}
-          </h4>
-          <p class="modal-preregister-desc">
-            {{ t({ 
-              vi: 'Nhận thông báo khi game mở server thử nghiệm Closed Beta & quà tặng tân thủ độc quyền.', 
-              en: 'Receive early notifications when Closed Beta begins and claim exclusive founder rewards.' 
-            }) }}
-          </p>
-          <form @submit.prevent="handlePreregister" class="modal-preregister-form">
-            <input 
-              type="email" 
-              v-model="preregisterEmail" 
-              :placeholder="t(config.modalTexts.preregisterPlaceholder)" 
-              class="form-input modal-email-input" 
-              required
+        <!-- Inner Scroll Container for Sleek Glass Scrollbar -->
+        <div class="modal-scroll-body">
+          <!-- Banner Preview with integrated fade and badge -->
+          <div class="modal-banner-wrap">
+            <img 
+              :src="selectedGame.coverImage" 
+              :alt="t(selectedGame.title)" 
+              class="modal-banner-img"
             >
-            <button type="submit" class="liquid-btn-primary modal-submit-btn">
-              <span>{{ t(config.modalTexts.preregisterBtn) }}</span>
-              <span>→</span>
-            </button>
-          </form>
+            <div class="modal-banner-overlay"></div>
+            <div class="coming-badge modal-banner-badge">
+              <span class="pulse-dot"></span>
+              <span>{{ t(selectedGame.badgeText) }}</span>
+            </div>
+          </div>
+
+          <!-- Modal Header -->
+          <div class="modal-game-header">
+            <h3 class="modal-game-title">
+              {{ t(selectedGame.title) }}
+            </h3>
+            <div class="modal-game-genre">
+              {{ t(selectedGame.genre) }}
+            </div>
+          </div>
+
+          <!-- Game Story / Description -->
+          <p class="modal-game-desc">
+            {{ t(selectedGame.fullDesc) }}
+          </p>
+
+          <!-- Metadata Info -->
+          <div class="modal-meta-grid">
+            <div class="modal-meta-box">
+              <span class="modal-meta-label">{{ t(config.modalTexts.releaseDateLabel) }}</span>
+              <span class="modal-meta-val release-val">{{ t(selectedGame.expectedRelease) }}</span>
+            </div>
+            <div class="modal-meta-box">
+              <span class="modal-meta-label">{{ t(config.modalTexts.platformsLabel) }}</span>
+              <span class="modal-meta-val">{{ selectedGame.platforms.join(' • ') }}</span>
+            </div>
+          </div>
+
+          <!-- Key Highlights -->
+          <div class="modal-features-wrap">
+            <h4 class="modal-section-title">
+              {{ t(config.modalTexts.keyFeaturesLabel) }}
+            </h4>
+            <ul class="modal-features-list">
+              <li v-for="(feat, fIdx) in selectedGame.features" :key="fIdx">
+                <span class="feature-diamond">✦</span> {{ t(feat) }}
+              </li>
+            </ul>
+          </div>
+
+          <!-- Pre-register Form -->
+          <div class="modal-preregister-box">
+            <h4 class="modal-preregister-title">
+              {{ t(config.modalTexts.preregisterTitle) }}
+            </h4>
+            <p class="modal-preregister-desc">
+              {{ t({ 
+                vi: 'Nhận thông báo khi game mở server thử nghiệm Closed Beta & quà tặng tân thủ độc quyền.', 
+                en: 'Receive early notifications when Closed Beta begins and claim exclusive founder rewards.' 
+              }) }}
+            </p>
+            <form @submit.prevent="handlePreregister" class="modal-preregister-form">
+              <input 
+                type="email" 
+                v-model="preregisterEmail" 
+                :placeholder="t(config.modalTexts.preregisterPlaceholder)" 
+                class="form-input modal-email-input" 
+                required
+              >
+              <button type="submit" class="liquid-btn-primary modal-submit-btn">
+                <span>{{ t(config.modalTexts.preregisterBtn) }}</span>
+                <span>→</span>
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
