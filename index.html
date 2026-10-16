@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Công ty TNHH TPZTech Studio | Thiết Kế Phần Mềm & Game Online</title>
+  
+  <!-- SEO & Open Graph Meta -->
+  <meta name="description" content="Công ty TNHH TPZTech Studio chuyên thiết kế, phát triển phần mềm doanh nghiệp và sản xuất trò chơi trực tuyến thế hệ mới tại Thành Phố Đồng Nai, Việt Nam.">
+  <meta name="keywords" content="TPZTech Studio, TPZTech, game studio việt nam, game online, phát triển phần mềm đồng nai, lập trình game, game sắp ra mắt">
+  <meta property="og:title" content="Công ty TNHH TPZTech Studio | Thiết Kế Phần Mềm & Game Online">
+  <meta property="og:description" content="Khám phá thế giới game và các giải pháp phần mềm hiện đại tại TPZTech Studio, Đồng Nai, Việt Nam.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#07090e">
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Anti-FOUC Script for Theme (Executes immediately before page paint) -->
+  <script>
+    (function() {
+      try {
+        var savedTheme = localStorage.getItem('tpz_theme') || 'auto';
+        var resolvedTheme = savedTheme;
+        if (savedTheme === 'auto') {
+          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          resolvedTheme = prefersDark ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', resolvedTheme);
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Inline v-cloak Style -->
+  <style>
+    [v-cloak] { display: none !important; }
+  </style>
+
+  <!-- Vue 3 Global CDN -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+  <!-- Application Logic -->
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div id="app" v-cloak>
+    <!-- Background Ambient Glowing Orbs -->
+    <div class="ambient-wrapper" aria-hidden="true">
+      <div class="ambient-orb orb-1"></div>
+      <div class="ambient-orb orb-2"></div>
+      <div class="ambient-orb orb-3"></div>
+    </div>
+
+    <!-- 1. Floating Glass Navigation Bar -->
+    <header class="nav-container">
+      <nav class="liquid-nav" role="navigation" aria-label="Main Navigation">
+        <!-- Brand Logo -->
+        <a href="#home" class="nav-brand" @click.prevent="scrollToSection('home')">
+          <div class="nav-brand-icon">✦</div>
+          <span>{{ config ? config.company.shortName : 'TPZTech Studio' }}</span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <ul class="nav-links" :class="{ 'mobile-open': isMobileMenuOpen }">
+          <li v-for="item in (config ? config.navigation : [])" :key="item.id">
+            <a 
+              :href="item.href" 
+              class="nav-link" 
+              :class="{ 
+                'active': activeSection === item.id,
+                'highlight': item.isHighlight
+              }"
+              @click.prevent="scrollToSection(item.id)"
+            >
+              {{ t(item.label) }}
+            </a>
+          </li>
+        </ul>
+
+        <!-- Controls: Theme, Language & CTA -->
+        <div class="nav-controls">
+          <!-- Theme Toggle (Dark / Light / Auto) -->
+          <div class="theme-toggle" :title="t({ vi: 'Chế độ giao diện', en: 'Theme mode' })">
+            <button 
+              type="button" 
+              class="theme-btn" 
+              :class="{ 'active': theme === 'dark' }" 
+              @click="setTheme('dark')"
+              :title="t(config?.themeLabels?.dark)"
+            >
+              🌙 <span>{{ t(config?.themeLabels?.dark) }}</span>
+            </button>
+            <button 
+              type="button" 
+              class="theme-btn" 
+              :class="{ 'active': theme === 'light' }" 
+              @click="setTheme('light')"
+              :title="t(config?.themeLabels?.light)"
+            >
+              ☀️ <span>{{ t(config?.themeLabels?.light) }}</span>
+            </button>
+            <button 
+              type="button" 
+              class="theme-btn" 
+              :class="{ 'active': theme === 'auto' }" 
+              @click="setTheme('auto')"
+              :title="t(config?.themeLabels?.auto)"
+            >
+              ⚡ <span>{{ t(config?.themeLabels?.auto) }}</span>
+            </button>
+          </div>
+
+          <!-- Language Switcher (VI / EN) -->
+          <div class="lang-toggle" :title="t({ vi: 'Ngôn ngữ', en: 'Language' })">
+            <button 
+              type="button" 
+              class="lang-btn" 
+              :class="{ 'active': lang === 'vi' }" 
+              @click="setLang('vi')"
+            >
+              VI
+            </button>
+            <button 
+              type="button" 
+              class="lang-btn" 
+              :class="{ 'active': lang === 'en' }" 
+              @click="setLang('en')"
+            >
+              EN
+            </button>
+          </div>
+
+          <!-- Mobile Hamburger Menu Button -->
+          <button 
+            type="button" 
+            class="mobile-menu-btn" 
+            @click="toggleMobileMenu" 
+            :aria-label="isMobileMenuOpen ? 'Close menu' : 'Open menu'"
+          >
+            {{ isMobileMenuOpen ? '✕' : '☰' }}
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-wrapper" v-if="config">
+      <!-- 2. Hero Section -->
+      <section id="home" class="section-container hero-section">
+        <!-- Floating Badge -->
+        <div class="hero-badge">
+          <span>{{ t(config.hero.badge) }}</span>
+        </div>
+
+        <!-- Headline -->
+        <h1 class="hero-title">
+          {{ t(config.hero.titlePart1) }}<br>
+          <span class="hero-gradient">{{ t(config.hero.titleHighlight) }}</span>
+        </h1>
+
+        <!-- Subtitle Description -->
+        <p class="hero-desc">
+          {{ t(config.hero.description) }}
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="hero-actions">
+          <a href="#games" class="liquid-btn-primary" @click.prevent="scrollToSection('games')">
+            {{ t(config.hero.primaryCta) }}
+          </a>
+          <a href="#contact" class="liquid-btn-glass" @click.prevent="scrollToSection('contact')">
+            {{ t(config.hero.secondaryCta) }}
+          </a>
+        </div>
+
+        <!-- Trust Metric Glass Chips (Tepaylink inspired trust indicators) -->
+        <div class="trust-metrics">
+          <div 
+            v-for="(metric, idx) in config.hero.trustMetrics" 
+            :key="idx" 
+            class="trust-chip liquid-glass"
+          >
+            <div class="trust-chip-val">{{ metric.value }}</div>
+            <div class="trust-chip-lbl">{{ t(metric.label) }}</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. About Us Section: Vision - Mission - Philosophy -->
+      <section id="about" class="section-container">
+        <div class="section-header">
+          <span class="section-tag">{{ t(config.about.tag) }}</span>
+          <h2 class="section-title">{{ t(config.about.title) }}</h2>
+          <p class="section-subtitle">{{ t(config.about.subtitle) }}</p>
+        </div>
+
+        <div class="pillars-grid">
+          <div 
+            v-for="(pillar, idx) in config.about.pillars" 
+            :key="idx" 
+            class="pillar-card liquid-card"
+          >
+            <div class="pillar-icon">{{ pillar.icon }}</div>
+            <h3 class="pillar-title">{{ t(pillar.title) }}</h3>
+            <p class="pillar-desc">{{ t(pillar.description) }}</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Core Capabilities & Services -->
+      <section id="services" class="section-container">
+        <div class="section-header">
+          <span class="section-tag">{{ t({ vi: '✦ Năng Lực Cốt Lõi', en: '✦ Core Capabilities' }) }}</span>
+          <h2 class="section-title">{{ t({ vi: 'Lĩnh Vực Hoạt Động & Dịch Vụ', en: 'Services & Development Domains' }) }}</h2>
+          <p class="section-subtitle">
+            {{ t({ 
+              vi: 'Hội tụ công nghệ phần mềm vững chắc và tư duy thiết kế game tương tác sáng tạo', 
+              en: 'Merging robust software engineering with cutting-edge interactive game design' 
+            }) }}
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <div 
+            v-for="(service, idx) in config.services" 
+            :key="idx" 
+            class="service-card liquid-card"
+          >
+            <div class="service-header">
+              <span class="service-icon">{{ service.icon }}</span>
+              <span class="service-badge">{{ service.badge }}</span>
+            </div>
+            <h3 class="service-title">{{ t(service.title) }}</h3>
+            <p class="service-desc">{{ t(service.description) }}</p>
+            <ul class="service-highlights">
+              <li v-for="(highlight, hIdx) in service.highlights" :key="hIdx">
+                {{ t(highlight) }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Featured Products: Upcoming Games Showcase -->
+      <section id="games" class="section-container">
+        <div class="section-header">
+          <span class="section-tag">{{ t(config.upcomingGamesSection.tag) }}</span>
+          <h2 class="section-title">{{ t(config.upcomingGamesSection.title) }}</h2>
+          <p class="section-subtitle">{{ t(config.upcomingGamesSection.subtitle) }}</p>
+        </div>
+
+        <!-- Filter Category Tabs -->
+        <div class="filter-bar">
+          <button 
+            v-for="cat in config.upcomingGamesSection.categories" 
+            :key="cat.id"
+            type="button" 
+            class="filter-btn" 
+            :class="{ 'active': activeCategory === cat.id }"
+            @click="setCategory(cat.id)"
+          >
+            {{ t(cat.label) }}
+          </button>
+        </div>
+
+        <!-- Game Cards Grid -->
+        <div class="game-grid">
+          <div 
+            v-for="game in filteredGames" 
+            :key="game.id" 
+            class="game-card liquid-card"
+            @click="openGameModal(game)"
+          >
+            <!-- Card Banner with Animated Coming Soon Badge -->
+            <div class="game-banner-box">
+              <div class="coming-badge">
+                <span class="pulse-dot"></span>
+                <span>{{ t(game.badgeText) }}</span>
+              </div>
+              <img 
+                :src="game.coverImage" 
+                :alt="t(game.title)" 
+                class="game-banner-img"
+                loading="lazy"
+                onerror="this.style.display='none'"
+              >
+            </div>
+
+            <!-- Card Body -->
+            <div class="game-body">
+              <div class="game-tags">
+                <span v-for="(plat, pIdx) in game.platforms" :key="pIdx" class="game-platform-tag">
+                  {{ plat }}
+                </span>
+              </div>
+              <h3 class="game-title">{{ t(game.title) }}</h3>
+              <div class="game-genre">{{ t(game.genre) }}</div>
+              <p class="game-desc">{{ t(game.shortDesc) }}</p>
+              
+              <div class="game-footer">
+                <span class="game-release">{{ t(game.expectedRelease) }}</span>
+                <button type="button" class="game-card-btn">
+                  {{ t(config.upcomingGamesSection.btnDetails) }} →
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. Tech Stack & Strategic Ecosystem -->
+      <section id="partners" class="section-container">
+        <div class="section-header">
+          <span class="section-tag">{{ t({ vi: '✦ Hệ Sinh Thái Công Nghệ', en: '✦ Tech Ecosystem' }) }}</span>
+          <h2 class="section-title">{{ t({ vi: 'Công Nghệ Nền Tảng & Đối Tác', en: 'Core Technologies & Toolsets' }) }}</h2>
+          <p class="section-subtitle">
+            {{ t({ 
+              vi: 'Các tiêu chuẩn công nghệ hàng đầu thế giới được TPZTech Studio làm chủ và áp dụng', 
+              en: 'Industry-standard engines and cloud infrastructure mastered by TPZTech Studio' 
+            }) }}
+          </p>
+        </div>
+
+        <div class="tech-grid">
+          <div 
+            v-for="(tech, idx) in config.techStack" 
+            :key="idx" 
+            class="tech-chip liquid-glass"
+          >
+            <div class="tech-name">{{ tech.name }}</div>
+            <div class="tech-role">{{ tech.role }}</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. Contact Section -->
+      <section id="contact" class="section-container">
+        <div class="section-header">
+          <span class="section-tag">{{ t(config.contact.tag) }}</span>
+          <h2 class="section-title">{{ t(config.contact.title) }}</h2>
+          <p class="section-subtitle">{{ t(config.contact.subtitle) }}</p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Contact Info Card -->
+          <div class="contact-info-card liquid-card">
+            <div class="contact-item">
+              <div class="contact-item-icon">📍</div>
+              <div>
+                <div class="contact-item-label">{{ t({ vi: 'Trụ Sở Chính', en: 'Headquarters' }) }}</div>
+                <div class="contact-item-val">{{ t(config.company.address) }}</div>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item-icon">✉️</div>
+              <div>
+                <div class="contact-item-label">{{ t({ vi: 'Hộp Thư Điện Tử', en: 'Email Inquiries' }) }}</div>
+                <div class="contact-item-val">
+                  <a :href="'mailto:' + config.company.email" style="color: inherit; text-decoration: none;">
+                    {{ config.company.email }}
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item-icon">📞</div>
+              <div>
+                <div class="contact-item-label">{{ t({ vi: 'Đường Dây Nóng', en: 'Hotline' }) }}</div>
+                <div class="contact-item-val">
+                  <a :href="'tel:' + config.company.hotline" style="color: inherit; text-decoration: none;">
+                    {{ config.company.hotline }}
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item-icon">⏱️</div>
+              <div>
+                <div class="contact-item-label">{{ t({ vi: 'Thời Gian Làm Việc', en: 'Working Hours' }) }}</div>
+                <div class="contact-item-val">{{ t(config.company.workingHours) }}</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Contact Form -->
+          <form class="contact-form liquid-card" @submit.prevent="handleContactSubmit">
+            <div class="form-group">
+              <label class="form-label">{{ t(config.contact.form.nameLabel) }}</label>
+              <input 
+                type="text" 
+                v-model="contactForm.name" 
+                :placeholder="t(config.contact.form.namePlaceholder)" 
+                class="form-input" 
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">{{ t(config.contact.form.emailLabel) }}</label>
+              <input 
+                type="email" 
+                v-model="contactForm.email" 
+                :placeholder="t(config.contact.form.emailPlaceholder)" 
+                class="form-input" 
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">{{ t(config.contact.form.serviceLabel) }}</label>
+              <select v-model="contactForm.service" class="form-select">
+                <option 
+                  v-for="opt in config.contact.form.serviceOptions" 
+                  :key="opt.id" 
+                  :value="opt.id"
+                >
+                  {{ t(opt.label) }}
+                </option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">{{ t(config.contact.form.messageLabel) }}</label>
+              <textarea 
+                v-model="contactForm.message" 
+                :placeholder="t(config.contact.form.messagePlaceholder)" 
+                class="form-textarea" 
+                required
+              ></textarea>
+            </div>
+
+            <button 
+              type="submit" 
+              class="liquid-btn-primary" 
+              :disabled="isSubmittingContact"
+              style="width: 100%; border-radius: 12px; margin-top: 0.5rem;"
+            >
+              {{ isSubmittingContact ? t({ vi: 'Đang gửi...', en: 'Sending...' }) : t(config.contact.form.submitBtn) }}
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- 8. Corporate Footer (Tepaylink inspired compliance & elegance) -->
+    <footer class="site-footer liquid-glass" v-if="config">
+      <div class="footer-top">
+        <!-- Col 1: Company Profile -->
+        <div>
+          <div class="footer-brand">
+            <span style="color: var(--accent-cyan);">✦</span>
+            <span>{{ t(config.company.name) }}</span>
+          </div>
+          <p class="footer-desc">{{ t(config.footer.companyDesc) }}</p>
+          <div class="footer-socials">
+            <a 
+              v-for="soc in config.company.socials" 
+              :key="soc.name" 
+              :href="soc.url" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="social-icon-btn"
+              :title="soc.name"
+            >
+              <span v-if="soc.icon === 'facebook'">f</span>
+              <span v-else-if="soc.icon === 'youtube'">▶</span>
+              <span v-else-if="soc.icon === 'discord'">💬</span>
+              <span v-else-if="soc.icon === 'github'">⌥</span>
+              <span v-else>✦</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Col 2: Navigation Links -->
+        <div>
+          <h4 class="footer-col-title">{{ t(config.footer.quickLinksTitle) }}</h4>
+          <ul class="footer-links-list">
+            <li v-for="item in config.navigation" :key="'f-' + item.id">
+              <a :href="item.href" class="footer-link" @click.prevent="scrollToSection(item.id)">
+                • {{ t(item.label) }}
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Address & Legal Notice -->
+        <div>
+          <h4 class="footer-col-title">{{ t(config.footer.contactInfoTitle) }}</h4>
+          <div class="footer-address-info">
+            <p><strong>{{ t({ vi: 'Trụ sở chính:', en: 'Headquarters:' }) }}</strong> {{ t(config.company.address) }}</p>
+            <p><strong>Email:</strong> {{ config.company.email }}</p>
+            <p><strong>Hotline:</strong> {{ config.company.hotline }}</p>
+            <p style="margin-top: 0.5rem; font-size: 0.8rem; color: var(--text-muted);">
+              {{ t(config.company.slogan) }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom">
+        <div>{{ t(config.footer.copyright) }}</div>
+        <div>{{ t(config.footer.builtWith) }}</div>
+      </div>
+    </footer>
+
+    <!-- 9. Interactive Glass Modal: Game Details & Pre-Register -->
+    <div 
+      class="modal-overlay" 
+      v-if="selectedGame" 
+      @click.self="closeGameModal"
+      role="dialog" 
+      aria-modal="true"
+    >
+      <div class="modal-content liquid-glass">
+        <!-- Close Button -->
+        <button 
+          type="button" 
+          class="modal-close-btn" 
+          @click="closeGameModal" 
+          :aria-label="t(config.modalTexts.closeBtn)"
+        >
+          ✕
+        </button>
+
+        <!-- Modal Header -->
+        <div style="margin-bottom: 1.5rem;">
+          <div class="coming-badge" style="position: static; display: inline-flex; margin-bottom: 0.75rem;">
+            <span class="pulse-dot"></span>
+            <span>{{ t(selectedGame.badgeText) }}</span>
+          </div>
+          <h3 style="font-size: 1.6rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.25rem;">
+            {{ t(selectedGame.title) }}
+          </h3>
+          <div style="color: var(--accent-cyan); font-weight: 600; font-size: 0.9rem;">
+            {{ t(selectedGame.genre) }}
+          </div>
+        </div>
+
+        <!-- Banner Preview -->
+        <div style="height: 220px; border-radius: 14px; overflow: hidden; margin-bottom: 1.5rem; border: 1px solid var(--glass-border);">
+          <img 
+            :src="selectedGame.coverImage" 
+            :alt="t(selectedGame.title)" 
+            style="width: 100%; height: 100%; object-fit: cover;"
+          >
+        </div>
+
+        <!-- Game Story / Description -->
+        <div style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1.5rem;">
+          {{ t(selectedGame.fullDesc) }}
+        </div>
+
+        <!-- Metadata Info -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; background: var(--glass-bg); padding: 1rem; border-radius: 12px; border: 1px solid var(--glass-border);">
+          <div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">
+              {{ t(config.modalTexts.releaseDateLabel) }}
+            </div>
+            <div style="font-weight: 700; color: var(--accent-cyan); font-size: 0.95rem;">
+              {{ t(selectedGame.expectedRelease) }}
+            </div>
+          </div>
+          <div>
+            <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">
+              {{ t(config.modalTexts.platformsLabel) }}
+            </div>
+            <div style="font-weight: 700; color: var(--text-primary); font-size: 0.95rem;">
+              {{ selectedGame.platforms.join(' • ') }}
+            </div>
+          </div>
+        </div>
+
+        <!-- Key Highlights -->
+        <div style="margin-bottom: 2rem;">
+          <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--text-primary);">
+            {{ t(config.modalTexts.keyFeaturesLabel) }}
+          </h4>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 6px;">
+            <li v-for="(feat, fIdx) in selectedGame.features" :key="fIdx" style="font-size: 0.86rem; color: var(--text-secondary); display: flex; align-items: center; gap: 8px;">
+              <span style="color: var(--accent-cyan);">✦</span> {{ t(feat) }}
+            </li>
+          </ul>
+        </div>
+
+        <!-- Pre-register Form -->
+        <div style="background: var(--glass-bg); border: 1px solid var(--accent-cyan); border-radius: 14px; padding: 1.5rem; text-align: center;">
+          <h4 style="font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-primary);">
+            {{ t(config.modalTexts.preregisterTitle) }}
+          </h4>
+          <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 1rem;">
+            {{ t({ 
+              vi: 'Nhận thông báo khi game mở server thử nghiệm Closed Beta & quà tặng tân thủ độc quyền.', 
+              en: 'Receive early notifications when Closed Beta begins and claim exclusive founder rewards.' 
+            }) }}
+          </p>
+          <form @submit.prevent="handlePreregister" style="display: flex; gap: 8px; max-width: 480px; margin: 0 auto; flex-wrap: wrap;">
+            <input 
+              type="email" 
+              v-model="preregisterEmail" 
+              :placeholder="t(config.modalTexts.preregisterPlaceholder)" 
+              class="form-input" 
+              style="flex: 1; min-width: 220px;"
+              required
+            >
+            <button type="submit" class="liquid-btn-primary" style="padding: 10px 20px;">
+              {{ t(config.modalTexts.preregisterBtn) }}
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10. Floating Toast Notification -->
+    <div class="toast-notification" v-if="toast.show" role="status" aria-live="polite">
+      <span>{{ toast.message }}</span>
+    </div>
+  </div>
+</body>
+</html>
