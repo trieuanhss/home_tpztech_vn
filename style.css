@@ -720,18 +720,34 @@ body {
   flex-wrap: wrap;
 }
 
-/* Trust Metrics */
-.trust-metrics {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-  gap: 1.25rem;
+/* Trust Metrics Horizontal Swiper */
+.trust-swiper {
   max-width: 1040px;
   margin: 0 auto;
+  padding: 6px 4px 18px 4px !important;
+}
+
+.trust-swiper .swiper-slide {
+  height: auto;
+  display: flex;
 }
 
 .trust-chip {
+  width: 100%;
   padding: 1.4rem 1.2rem;
   text-align: center;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.trust-chip:hover {
+  transform: translateY(-3px);
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--glass-shadow-hover);
 }
 
 .trust-chip-val {
@@ -746,6 +762,21 @@ body {
   font-size: 0.82rem;
   color: var(--text-secondary);
   font-weight: 500;
+  line-height: 1.4;
+}
+
+/* Trust navigation bar visibility */
+@media (min-width: 1024px) {
+  .trust-nav-bar {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  .trust-nav-bar {
+    display: flex;
+    margin-top: 0.6rem;
+  }
 }
 
 /* 8. Swiper Base & Slide Containers */
@@ -1694,5 +1725,4 @@ body {
 
 @media (max-width: 480px) {
   .hero-title { font-size: 1.8rem; }
-  .trust-metrics { grid-template-columns: 1fr 1fr; }
 }

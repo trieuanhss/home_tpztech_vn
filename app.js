@@ -39,6 +39,7 @@ const app = createApp({
     });
 
     // Swiper instances storage
+    let trustSwiperInstance = null;
     let aboutSwiperInstance = null;
     let servicesSwiperInstance = null;
     let gamesSwiperInstance = null;
@@ -194,6 +195,31 @@ const app = createApp({
       }
 
       nextTick(() => {
+        // 0. Trust Metrics Swiper (Hero Trust Chips - slides horizontally when < 4 per row)
+        if (document.querySelector('.trust-swiper')) {
+          if (trustSwiperInstance) trustSwiperInstance.destroy(true, true);
+          trustSwiperInstance = new Swiper('.trust-swiper', {
+            slidesPerView: 1.25,
+            spaceBetween: 14,
+            grabCursor: true,
+            watchOverflow: true,
+            breakpoints: {
+              480: { slidesPerView: 1.75, spaceBetween: 16 },
+              640: { slidesPerView: 2.3, spaceBetween: 16 },
+              840: { slidesPerView: 3.1, spaceBetween: 18 },
+              1024: { slidesPerView: 4, spaceBetween: 20, allowTouchMove: false }
+            },
+            pagination: {
+              el: '.trust-pagination',
+              clickable: true
+            },
+            navigation: {
+              nextEl: '.trust-next',
+              prevEl: '.trust-prev'
+            }
+          });
+        }
+
         // 1. About Swiper (Tầm nhìn & Sứ mệnh)
         if (document.querySelector('.about-swiper')) {
           if (aboutSwiperInstance) aboutSwiperInstance.destroy(true, true);
@@ -309,6 +335,7 @@ const app = createApp({
     };
 
     const updateAllSwipers = () => {
+      if (trustSwiperInstance) trustSwiperInstance.update();
       if (aboutSwiperInstance) aboutSwiperInstance.update();
       if (servicesSwiperInstance) servicesSwiperInstance.update();
       if (gamesSwiperInstance) gamesSwiperInstance.update();
@@ -383,6 +410,7 @@ const app = createApp({
       if (systemThemeMediaQuery) {
         systemThemeMediaQuery.removeEventListener('change', handleSystemThemeChange);
       }
+      if (trustSwiperInstance) trustSwiperInstance.destroy();
       if (aboutSwiperInstance) aboutSwiperInstance.destroy();
       if (servicesSwiperInstance) servicesSwiperInstance.destroy();
       if (gamesSwiperInstance) gamesSwiperInstance.destroy();

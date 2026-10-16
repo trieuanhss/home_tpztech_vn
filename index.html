@@ -259,15 +259,25 @@
           </a>
         </div>
 
-        <!-- Trust Metric Glass Chips -->
-        <div class="trust-metrics">
-          <div 
-            v-for="(metric, idx) in config.hero.trustMetrics" 
-            :key="idx" 
-            class="trust-chip liquid-glass"
-          >
-            <div class="trust-chip-val">{{ metric.value }}</div>
-            <div class="trust-chip-lbl">{{ t(metric.label) }}</div>
+        <!-- Trust Metric Glass Chips (Horizontal Swiper when < 4 items per row) -->
+        <div class="swiper trust-swiper">
+          <div class="swiper-wrapper">
+            <div 
+              v-for="(metric, idx) in config.hero.trustMetrics" 
+              :key="idx" 
+              class="swiper-slide"
+            >
+              <div class="trust-chip liquid-glass">
+                <div class="trust-chip-val">{{ metric.value }}</div>
+                <div class="trust-chip-lbl">{{ t(metric.label) }}</div>
+              </div>
+            </div>
+          </div>
+          <!-- Carousel Navigation: Arrow Prev, Dots, Arrow Next (visible on responsive < 4 viewports) -->
+          <div class="carousel-nav-bar trust-nav-bar">
+            <button type="button" class="swiper-btn-prev trust-prev" aria-label="Previous">←</button>
+            <div class="swiper-pagination trust-pagination"></div>
+            <button type="button" class="swiper-btn-next trust-next" aria-label="Next">→</button>
           </div>
         </div>
       </section>
