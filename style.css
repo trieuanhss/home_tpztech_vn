@@ -787,10 +787,12 @@ body {
 .trust-swiper .swiper-slide {
   height: auto;
   display: flex;
+  justify-content: center;
 }
 
 .trust-chip {
   width: 100%;
+  max-width: 480px;
   padding: 1.4rem 1.2rem;
   text-align: center;
   border-radius: 20px;
@@ -799,6 +801,13 @@ body {
   justify-content: center;
   align-items: center;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+@media (min-width: 1024px) {
+  .trust-chip {
+    max-width: 100%;
+  }
 }
 
 .trust-chip:hover {

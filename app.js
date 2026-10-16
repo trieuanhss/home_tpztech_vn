@@ -229,14 +229,12 @@ const app = createApp({
         if (document.querySelector('.trust-swiper')) {
           if (trustSwiperInstance) trustSwiperInstance.destroy(true, true);
           trustSwiperInstance = new Swiper('.trust-swiper', {
-            slidesPerView: 1.25,
-            spaceBetween: 14,
+            slidesPerView: 1,
+            spaceBetween: 16,
             grabCursor: true,
             watchOverflow: true,
             breakpoints: {
-              480: { slidesPerView: 1.75, spaceBetween: 16 },
-              640: { slidesPerView: 2.3, spaceBetween: 16 },
-              840: { slidesPerView: 3.1, spaceBetween: 18 },
+              640: { slidesPerView: 2, spaceBetween: 18 },
               1024: { slidesPerView: 4, spaceBetween: 20, allowTouchMove: false }
             },
             pagination: {
