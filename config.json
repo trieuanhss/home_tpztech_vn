@@ -1,0 +1,469 @@
+{
+  "company": {
+    "name": {
+      "vi": "Công ty TNHH TPZTech Studio",
+      "en": "TPZTech Studio Co., Ltd."
+    },
+    "shortName": "TPZTech Studio",
+    "slogan": {
+      "vi": "Sản phẩm tạo uy tín • Khát vọng định hình tương lai số",
+      "en": "Quality builds reputation • Shaping the future of digital experience"
+    },
+    "address": {
+      "vi": "Thành Phố Đồng Nai, Việt Nam",
+      "en": "Dong Nai City, Vietnam"
+    },
+    "email": "contact@tpztech.vn",
+    "hotline": "(+84) 0988 123 456",
+    "workingHours": {
+      "vi": "Thứ 2 - Thứ 6: 08:30 - 17:30",
+      "en": "Mon - Fri: 08:30 - 17:30"
+    },
+    "socials": [
+      { "name": "Facebook", "icon": "facebook", "url": "https://facebook.com/tpztechstudio" },
+      { "name": "YouTube", "icon": "youtube", "url": "https://youtube.com/@tpztechstudio" },
+      { "name": "Discord", "icon": "discord", "url": "https://discord.gg/tpztech" },
+      { "name": "GitHub", "icon": "github", "url": "https://github.com/tpztech" }
+    ]
+  },
+  "themeLabels": {
+    "dark": { "vi": "Tối", "en": "Dark" },
+    "light": { "vi": "Sáng", "en": "Light" },
+    "auto": { "vi": "Tự động", "en": "Auto" }
+  },
+  "langLabels": {
+    "vi": "Tiếng Việt",
+    "en": "English"
+  },
+  "navigation": [
+    { "id": "home", "label": { "vi": "Trang chủ", "en": "Home" }, "href": "#home" },
+    { "id": "about", "label": { "vi": "Về TPZTech", "en": "About Us" }, "href": "#about" },
+    { "id": "services", "label": { "vi": "Lĩnh vực", "en": "Services" }, "href": "#services" },
+    { "id": "games", "label": { "vi": "Game Sắp Ra Mắt", "en": "Upcoming Games" }, "href": "#games", "isHighlight": true },
+    { "id": "partners", "label": { "vi": "Hệ sinh thái", "en": "Ecosystem" }, "href": "#partners" },
+    { "id": "contact", "label": { "vi": "Liên hệ", "en": "Contact" }, "href": "#contact" }
+  ],
+  "hero": {
+    "badge": {
+      "vi": "🚀 Đổi mới công nghệ • Kiến tạo giải trí đỉnh cao",
+      "en": "🚀 Tech Innovation • Crafting Immersive Entertainment"
+    },
+    "titlePart1": {
+      "vi": "Sản Phẩm Tạo Uy Tín",
+      "en": "Products Build Trust"
+    },
+    "titleHighlight": {
+      "vi": "Khát Vọng Định Hình Tương Lai Số",
+      "en": "Shaping The Next Digital Future"
+    },
+    "description": {
+      "vi": "Công ty TNHH TPZTech Studio chuyên nghiên cứu, thiết kế phần mềm doanh nghiệp và phát triển các tựa game online đa nền tảng đột phá. Trụ sở tại Thành Phố Đồng Nai, Việt Nam.",
+      "en": "TPZTech Studio Co., Ltd. specializes in enterprise software solutions and breakthrough multi-platform online games. Headquartered in Dong Nai City, Vietnam."
+    },
+    "primaryCta": {
+      "vi": "Khám phá Game Sắp Ra Mắt ↓",
+      "en": "Explore Upcoming Games ↓"
+    },
+    "secondaryCta": {
+      "vi": "Hợp tác & Liên hệ",
+      "en": "Partner With Us"
+    },
+    "trustMetrics": [
+      {
+        "value": "100%",
+        "label": {
+          "vi": "Sản phẩm tự chủ & bản quyền",
+          "en": "Proprietary & licensed products"
+        }
+      },
+      {
+        "value": "Multi-Platform",
+        "label": {
+          "vi": "Đồng bộ PC, Mobile & Web",
+          "en": "Cross-platform PC, Mobile & Web"
+        }
+      },
+      {
+        "value": "High-Tech",
+        "label": {
+          "vi": "Engine đồ họa & Cloud hiện đại",
+          "en": "Modern Engine & Cloud Native"
+        }
+      },
+      {
+        "value": "24/7",
+        "label": {
+          "vi": "Đồng hành & hỗ trợ kỹ thuật",
+          "en": "Continuous technical support"
+        }
+      }
+    ]
+  },
+  "about": {
+    "tag": {
+      "vi": "✦ Về TPZTech Studio",
+      "en": "✦ About TPZTech Studio"
+    },
+    "title": {
+      "vi": "Tầm Nhìn & Sứ Mệnh Phát Triển",
+      "en": "Vision & Core Mission"
+    },
+    "subtitle": {
+      "vi": "Được xây dựng bởi đội ngũ kỹ sư và nhà phát triển game đam mê, sẵn sàng bứt phá mọi giới hạn công nghệ",
+      "en": "Built by passionate software engineers and game creators, ready to push technological boundaries"
+    },
+    "pillars": [
+      {
+        "icon": "🎯",
+        "title": {
+          "vi": "Tầm Nhìn Cốt Lõi",
+          "en": "Core Vision"
+        },
+        "description": {
+          "vi": "Trở thành studio công nghệ và phát triển game hàng đầu khu vực, kiến tạo các sản phẩm phần mềm chất lượng cao và hệ sinh thái game trực tuyến cuốn hút, vươn tầm từ Đồng Nai ra toàn quốc và quốc tế.",
+          "en": "To become a premier technology and game studio, delivering high-performance software and captivating online game ecosystems from Dong Nai to regional and global markets."
+        }
+      },
+      {
+        "icon": "💎",
+        "title": {
+          "vi": "Sứ Mệnh Thương Hiệu",
+          "en": "Brand Mission"
+        },
+        "description": {
+          "vi": "Mang đến cho cộng đồng người chơi những trải nghiệm giải trí sống động, mượt mà và kết nối. Đồng thời cung cấp các giải pháp phần mềm tối ưu, bảo mật và chuẩn hóa quy trình chuyển đổi số.",
+          "en": "To bring vivid, fluid, and connected entertainment experiences to players, while providing optimized, secure software and digital transformation solutions for enterprises."
+        }
+      },
+      {
+        "icon": "⚡",
+        "title": {
+          "vi": "Triết Lý Sản Phẩm",
+          "en": "Product Philosophy"
+        },
+        "description": {
+          "vi": "Chất lượng và sự hài lòng của người dùng là thước đo thành công duy nhất. Mọi dòng mã, mọi thiết kế giao diện đều được chăm chút kỹ lưỡng với tiêu chuẩn thẩm mỹ và công nghệ khắt khe nhất.",
+          "en": "User satisfaction and quality are our ultimate benchmarks. Every line of code and interface element is sculpted with uncompromising aesthetic and performance standards."
+        }
+      }
+    ]
+  },
+  "services": [
+    {
+      "icon": "🎮",
+      "badge": "Core Focus",
+      "title": {
+        "vi": "Sản Xuất Game Online Đa Nền Tảng",
+        "en": "Multi-Platform Online Game Development"
+      },
+      "description": {
+        "vi": "Thiết kế gameplay lôi cuốn, hệ thống multiplayer chịu tải cao, tích hợp đồ họa 3D hiện đại trên Unity và Unreal Engine.",
+        "en": "Crafting engaging gameplay, high-concurrency multiplayer backend systems, and modern 3D visuals using Unity and Unreal Engine."
+      },
+      "highlights": [
+        { "vi": "Game MMORPG & ARPG", "en": "MMORPG & ARPG Games" },
+        { "vi": "Chiến thuật PvP thời gian thực", "en": "Real-Time PvP Strategy" },
+        { "vi": "Tối ưu hóa đa thiết bị (PC, iOS, Android)", "en": "Cross-device optimization" }
+      ]
+    },
+    {
+      "icon": "💻",
+      "badge": "Enterprise",
+      "title": {
+        "vi": "Thiết Kế & Phát Triển Phần Mềm",
+        "en": "Custom Software Engineering"
+      },
+      "description": {
+        "vi": "Xây dựng các giải pháp ứng dụng số hóa, web app chuyên sâu, hệ thống backend hiệu năng cao theo yêu cầu doanh nghiệp.",
+        "en": "Architecting bespoke digital applications, intensive web apps, and high-performance cloud backends tailored for enterprises."
+      },
+      "highlights": [
+        { "vi": "Kiến trúc Microservices & Cloud Native", "en": "Microservices & Cloud Native" },
+        { "vi": "Hệ thống bảo mật và phân quyền", "en": "Role-based security & auth" },
+        { "vi": "Tích hợp API & Tự động hóa", "en": "API integration & automation" }
+      ]
+    },
+    {
+      "icon": "🎨",
+      "badge": "Apple Glass Style",
+      "title": {
+        "vi": "Thiết Kế UI/UX & Mỹ Thuật Số",
+        "en": "UI/UX & Digital Art Design"
+      },
+      "description": {
+        "vi": "Kiến tạo trải nghiệm thị giác đột phá với ngôn ngữ Apple Liquid Glass, micro-animations tinh tế và tối ưu tương tác người dùng.",
+        "en": "Crafting next-gen visuals with Apple Liquid Glass aesthetics, refined micro-animations, and seamless user interaction design."
+      },
+      "highlights": [
+        { "vi": "Giao diện Glassmorphism độc bản", "en": "Bespoke Glassmorphism UI" },
+        { "vi": "Hiệu ứng chuyển động 60fps mượt mà", "en": "Fluid 60fps micro-animations" },
+        { "vi": "Thiết kế nhân vật & bối cảnh game", "en": "Game character & concept art" }
+      ]
+    }
+  ],
+  "upcomingGamesSection": {
+    "tag": {
+      "vi": "🚀 Danh Mục Sản Phẩm",
+      "en": "🚀 Product Showcase"
+    },
+    "title": {
+      "vi": "Dự Án Game Sắp Ra Mắt",
+      "en": "Upcoming Game Projects"
+    },
+    "subtitle": {
+      "vi": "Những thế giới kỳ ảo đầy kịch tính đang được đội ngũ TPZTech Studio ngày đêm ấp ủ và hoàn thiện",
+      "en": "Immersive worlds and high-octane adventures meticulously crafted by the TPZTech Studio team"
+    },
+    "filterAll": {
+      "vi": "Tất cả dự án",
+      "en": "All Projects"
+    },
+    "categories": [
+      { "id": "all", "label": { "vi": "Tất cả", "en": "All" } },
+      { "id": "rpg", "label": { "vi": "Nhập vai & Hành động", "en": "Action RPG" } },
+      { "id": "strategy", "label": { "vi": "Chiến thuật PvP", "en": "PvP Strategy" } },
+      { "id": "mobile", "label": { "vi": "Game Di Động", "en": "Mobile Games" } }
+    ],
+    "btnDetails": {
+      "vi": "Xem Teaser & Đăng ký",
+      "en": "View Teaser & Register"
+    },
+    "badgeStatusLabel": {
+      "vi": "SẮP RA MẮT",
+      "en": "COMING SOON"
+    }
+  },
+  "upcomingGames": [
+    {
+      "id": "chrono-blade",
+      "category": "rpg",
+      "title": {
+        "vi": "Huyền Thoại Kiếm Khách: Chrono Blade",
+        "en": "Chrono Blade: The Lost Legends"
+      },
+      "genre": {
+        "vi": "ARPG Thế Giới Mở • Khinh Công Tự Do",
+        "en": "Open World ARPG • Fluid Aerial Combat"
+      },
+      "statusBadge": "in_development",
+      "badgeText": {
+        "vi": "Sắp ra mắt • Alpha Test",
+        "en": "Coming Soon • Alpha Test"
+      },
+      "platforms": ["PC", "iOS", "Android"],
+      "expectedRelease": {
+        "vi": "Dự kiến: Quý 4 / 2026",
+        "en": "Estimated: Q4 2026"
+      },
+      "coverColor": "linear-gradient(135deg, #0ea5e9, #6366f1)",
+      "coverImage": "assets/game-chrono-blade.svg",
+      "shortDesc": {
+        "vi": "Hành trình phiêu lưu xuyên không gian võ hiệp viễn tưởng. Chiến đấu thời gian thực tốc độ cao với đồ họa kính phản quang đa tầng.",
+        "en": "An epic odyssey across a sci-fi wuxia universe. Fast-paced aerial real-time combat rendered with specular reflection graphics."
+      },
+      "fullDesc": {
+        "vi": "Chrono Blade đưa người chơi vào thế giới nơi võ học cổ truyền giao thoa cùng công nghệ phản vật chất. Người chơi sẽ được tự do bay lượn khinh công giữa các quần đảo lơ lửng, tham gia săn boss thế giới cùng hàng ngàn game thủ khác và tham gia đấu trường bang hội liên máy chủ không độ trễ.",
+        "en": "Chrono Blade immerses players in a universe where ancient martial arts collide with antimatter technology. Glide freely through sky islands, challenge massive global raid bosses with thousands of simultaneous players, and fight in low-latency cross-server guild wars."
+      },
+      "features": [
+        { "vi": "Đồ họa Unreal Engine 5 đỉnh cao", "en": "Powered by Unreal Engine 5" },
+        { "vi": "Hệ thống khinh công không giới hạn độ cao", "en": "Unconstrained 360-degree aerial flight" },
+        { "vi": "Chiến trường liên máy chủ 1,000+ người", "en": "1,000+ player massive siege wars" }
+      ]
+    },
+    {
+      "id": "cyber-vanguard",
+      "category": "strategy",
+      "title": {
+        "vi": "Chiến Binh Tiên Phong: Cyber Vanguard",
+        "en": "Cyber Vanguard: Steel Horizon"
+      },
+      "genre": {
+        "vi": "Chiến Thuật RTS • Đấu Trường Mecha PvP",
+        "en": "Real-time Strategy • Mecha PvP Arena"
+      },
+      "statusBadge": "beta_ready",
+      "badgeText": {
+        "vi": "Sắp ra mắt • Closed Beta",
+        "en": "Coming Soon • Closed Beta"
+      },
+      "platforms": ["PC", "Android", "iOS"],
+      "expectedRelease": {
+        "vi": "Dự kiến: Quý 1 / 2027",
+        "en": "Estimated: Q1 2027"
+      },
+      "coverColor": "linear-gradient(135deg, #10b981, #0284c7)",
+      "coverImage": "assets/game-cyber-vanguard.svg",
+      "shortDesc": {
+        "vi": "Chỉ huy sư đoàn cơ giáp tối tân trong đấu trường tương lai 2088. Cạnh tranh chiến thuật đỉnh cao với xếp hạng elo chuẩn eSports.",
+        "en": "Command advanced mech legions in the high-stakes tactical arena of 2088. True competitive RTS with eSports-ready matchmaking."
+      },
+      "fullDesc": {
+        "vi": "Trong Cyber Vanguard, mỗi chỉ huy nắm trong tay quyền tùy biến hàng trăm module chiến giáp từ khiên năng lượng, pháo plasma đến drone trinh sát. Gameplay đề cao khả năng kiểm soát bản đồ thời gian thực, phối hợp đội nhóm và phản xạ chiến thuật tức thì.",
+        "en": "In Cyber Vanguard, each commander customizes mecha modules ranging from plasma cannons to reconnaissance drone swarms. Victory depends on real-time map control, squad synergy, and instantaneous tactical counter-play."
+      },
+      "features": [
+        { "vi": "Hơn 50 bộ giáp chiến đấu mô phỏng cơ khí", "en": "50+ customizable modular mechs" },
+        { "vi": "Thi đấu xếp hạng mùa giải chuẩn eSports", "en": "Competitive ranked seasonal ladder" },
+        { "vi": "Server tickrate 60Hz không giật lag", "en": "High-performance 60Hz server tickrate" }
+      ]
+    },
+    {
+      "id": "sky-realms",
+      "category": "mobile",
+      "title": {
+        "vi": "Vương Quốc Bầu Trời: Mystic Sky Realms",
+        "en": "Mystic Sky Realms: Airborne Quest"
+      },
+      "genre": {
+        "vi": "Thám Hiểm Sinh Tồn • Co-op Đa Nền Tảng",
+        "en": "Exploration Survival • Cross-play Co-op"
+      },
+      "statusBadge": "concept_lab",
+      "badgeText": {
+        "vi": "Sắp ra mắt • In Development",
+        "en": "Coming Soon • In Development"
+      },
+      "platforms": ["Mobile", "PC", "WebGL"],
+      "expectedRelease": {
+        "vi": "Dự kiến: Quý 2 / 2027",
+        "en": "Estimated: Q2 2027"
+      },
+      "coverColor": "linear-gradient(135deg, #a855f7, #ec4899)",
+      "coverImage": "assets/game-sky-realms.svg",
+      "shortDesc": {
+        "vi": "Cùng bạn bè chế tạo phi thuyền, thám hiểm các hòn đảo bay kỳ ảo và xây dựng căn cứ trên những tầng mây huyền bí.",
+        "en": "Build airships with friends, discover floating mythological islands, and establish your sky citadel above the clouds."
+      },
+      "fullDesc": {
+        "vi": "Được xây dựng với phong cách đồ họa nghệ thuật lung linh, Mystic Sky Realms mang lại trải nghiệm phiêu lưu co-op thư giãn nhưng không kém phần bất ngờ. Hệ thống thời tiết động, kinh tế giao thương giữa các vương quốc và hệ thống thú cưỡi phong phú.",
+        "en": "Crafted with vibrant fantasy glass aesthetics, Mystic Sky Realms delivers an enchanting co-op adventure. Features dynamic cloud weather cycles, inter-realm airship trade, and loyal companion beasts."
+      },
+      "features": [
+        { "vi": "Xây dựng phi thuyền tự do theo ý thích", "en": "Full airship customization & physics" },
+        { "vi": "Chơi mượt mà ngay trên trình duyệt & Mobile", "en": "Instant play on WebGL & Mobile" },
+        { "vi": "Chế độ co-op cùng bạn bè 4-8 người", "en": "4-8 player fluid cooperative mode" }
+      ]
+    },
+    {
+      "id": "shadow-dominion",
+      "category": "rpg",
+      "title": {
+        "vi": "Vực Sâu Bóng Tối: Shadow Dominion",
+        "en": "Shadow Dominion: Dark Odyssey"
+      },
+      "genre": {
+        "vi": "Dark Fantasy • Hành Động Chặt Chém Souls-like",
+        "en": "Dark Fantasy • Fast-Paced Action Souls-like"
+      },
+      "statusBadge": "in_development",
+      "badgeText": {
+        "vi": "Sắp ra mắt • Concept Lab",
+        "en": "Coming Soon • Concept Lab"
+      },
+      "platforms": ["PC", "Console", "Mobile"],
+      "expectedRelease": {
+        "vi": "Dự kiến: Quý 3 / 2027",
+        "en": "Estimated: Q3 2027"
+      },
+      "coverColor": "linear-gradient(135deg, #f59e0b, #ef4444)",
+      "coverImage": "assets/game-shadow-dominion.svg",
+      "shortDesc": {
+        "vi": "Khám phá tàn tích của vương triều sụp đổ. Thử thách bản lĩnh trước những quái vật khổng lồ với cơ chế parry và né đòn chuẩn xác.",
+        "en": "Unravel the ruins of a fallen dark empire. Test your mastery against towering behemoths with precision parry mechanics."
+      },
+      "fullDesc": {
+        "vi": "Shadow Dominion hướng đến những game thủ yêu thích sự thử thách cao độ và cảm giác chinh phục. Hệ thống vũ khí đa dạng với hàng chục cây kỹ năng, cơ chế phản đòn và âm thanh vòm sống động mang lại trải nghiệm chặt chém nghẹt thở.",
+        "en": "Shadow Dominion caters to hardcore combat enthusiasts. Featuring extensive weapon talent trees, frame-perfect parrying, and spatial audio that puts you directly inside the battlefield."
+      },
+      "features": [
+        { "vi": "Cơ chế chiến đấu chuẩn xác từng khung hình", "en": "Frame-accurate combat & parrying" },
+        { "vi": "Đồ họa bóng tối huyền bí với ánh sáng động", "en": "Dynamic ray-traced shadows & lighting" },
+        { "vi": "Hơn 30 boss độc bản với AI biến hóa", "en": "30+ unique bosses with adaptive AI" }
+      ]
+    }
+  ],
+  "modalTexts": {
+    "releaseDateLabel": { "vi": "Thời gian dự kiến:", "en": "Target Release:" },
+    "platformsLabel": { "vi": "Nền tảng hỗ trợ:", "en": "Supported Platforms:" },
+    "keyFeaturesLabel": { "vi": "Tính năng nổi bật:", "en": "Key Highlights:" },
+    "preregisterTitle": { "vi": "Đăng ký nhận thông báo thử nghiệm sớm (Alpha/Beta)", "en": "Pre-register for Early Access & Alpha/Beta" },
+    "preregisterPlaceholder": { "vi": "Nhập email của bạn...", "en": "Enter your email address..." },
+    "preregisterBtn": { "vi": "Nhận vé thử nghiệm", "en": "Join Waitlist" },
+    "closeBtn": { "vi": "Đóng", "en": "Close" }
+  },
+  "techStack": [
+    { "name": "Unreal Engine 5", "role": "Next-Gen 3D Game Engine", "icon": "ue5" },
+    { "name": "Unity Technologies", "role": "Cross-Platform Game Development", "icon": "unity" },
+    { "name": "Vue.js & WebGL", "role": "Reactive Frontend & Web Games", "icon": "vue" },
+    { "name": "Node.js & Go", "role": "High-Concurrency Game Servers", "icon": "backend" },
+    { "name": "Cloud Native (AWS/GCP)", "role": "Scalable Infrastructure & CDN", "icon": "cloud" },
+    { "name": "Apple Metal & DirectX 12", "role": "Ultra-Low Latency Rendering", "icon": "graphics" }
+  ],
+  "contact": {
+    "tag": {
+      "vi": "✦ Kết Nối & Hợp Tác",
+      "en": "✦ Connect & Collaborate"
+    },
+    "title": {
+      "vi": "Khởi Đầu Dự Án Cùng TPZTech Studio",
+      "en": "Start Your Next Journey With TPZTech Studio"
+    },
+    "subtitle": {
+      "vi": "Bạn là nhà phát hành game, đối tác doanh nghiệp hay muốn thảo luận về ý tưởng phần mềm đột phá? Hãy liên hệ với chúng tôi ngay hôm nay.",
+      "en": "Are you a publisher, business partner, or innovator seeking breakthrough software & game solutions? Reach out to us today."
+    },
+    "form": {
+      "nameLabel": { "vi": "Họ và tên của bạn", "en": "Your Full Name" },
+      "namePlaceholder": { "vi": "Nguyễn Văn A", "en": "John Doe" },
+      "emailLabel": { "vi": "Địa chỉ Email", "en": "Email Address" },
+      "emailPlaceholder": { "vi": "name@example.com", "en": "name@example.com" },
+      "serviceLabel": { "vi": "Nhu cầu quan tâm", "en": "Subject of Interest" },
+      "serviceOptions": [
+        { "id": "game", "label": { "vi": "Hợp tác phát hành / Đồng phát triển Game", "en": "Game Publishing & Co-development" } },
+        { "id": "software", "label": { "vi": "Thiết kế & Lập trình Phần mềm Doanh nghiệp", "en": "Custom Enterprise Software" } },
+        { "id": "uiux", "label": { "vi": "Thiết kế UI/UX & Đồ họa phong cách Glass", "en": "Glassmorphism UI/UX Design" } },
+        { "id": "other", "label": { "vi": "Hợp tác khác", "en": "Other Inquiries" } }
+      ],
+      "messageLabel": { "vi": "Nội dung lời nhắn", "en": "Your Message" },
+      "messagePlaceholder": { "vi": "Chia sẻ thêm về mục tiêu và mong muốn của bạn...", "en": "Tell us about your project goals..." },
+      "submitBtn": { "vi": "Gửi Lời Nhắn Hợp Tác →", "en": "Send Partnership Request →" }
+    }
+  },
+  "footer": {
+    "companyDesc": {
+      "vi": "Đơn vị chuyên sâu về thiết kế, nghiên cứu và phát triển phần mềm ứng dụng, hệ thống số hóa và sản xuất trò chơi trực tuyến thế hệ mới tại Việt Nam.",
+      "en": "A specialized studio dedicated to cutting-edge software engineering, enterprise digitization, and next-generation online gaming in Vietnam."
+    },
+    "quickLinksTitle": {
+      "vi": "Liên Kết Nhanh",
+      "en": "Quick Navigation"
+    },
+    "contactInfoTitle": {
+      "vi": "Thông Tin Trụ Sở",
+      "en": "Headquarters Info"
+    },
+    "copyright": {
+      "vi": "© 2026 Công ty TNHH TPZTech Studio. Bảo lưu mọi quyền.",
+      "en": "© 2026 TPZTech Studio Co., Ltd. All rights reserved."
+    },
+    "builtWith": {
+      "vi": "Phát triển với HTML5, CSS3, Vue 3 & Phong cách Apple Liquid Glass",
+      "en": "Crafted with HTML5, CSS3, Vue 3 & Apple Liquid Glass Aesthetics"
+    }
+  },
+  "toasts": {
+    "preregisterSuccess": {
+      "vi": "🎉 Cảm ơn bạn! Chúng tôi đã ghi nhận email đăng ký thử nghiệm game.",
+      "en": "🎉 Thank you! Your pre-registration for early game access is confirmed."
+    },
+    "contactSuccess": {
+      "vi": "✉️ Cảm ơn bạn! Đội ngũ TPZTech Studio đã nhận được lời nhắn và sẽ phản hồi sớm nhất.",
+      "en": "✉️ Thank you! TPZTech Studio team has received your message and will respond shortly."
+    },
+    "validationError": {
+      "vi": "Vui lòng điền đầy đủ các thông tin hợp lệ.",
+      "en": "Please provide valid required information."
+    }
+  }
+}
