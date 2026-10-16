@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+    <linearGradient id="specularGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background rounded plate -->
+  <rect width="200" height="200" rx="46" fill="#0b0f17"/>
+  <rect width="198" height="198" x="1" y="1" rx="45" fill="none" stroke="url(#specularGrad)" stroke-width="2"/>
+
+  <!-- Glowing Emblem -->
+  <g filter="url(#glow)">
+    <!-- Outer Cyber Hexagon -->
+    <polygon points="100,32 158,65 158,135 100,168 42,135 42,65" fill="none" stroke="url(#primaryGrad)" stroke-width="8" stroke-linejoin="round"/>
+    
+    <!-- Inner Core Prism -->
+    <polygon points="100,56 138,78 138,122 100,144 62,122 62,78" fill="url(#primaryGrad)" fill-opacity="0.25" stroke="url(#primaryGrad)" stroke-width="3"/>
+    
+    <!-- Central Star Motif -->
+    <path d="M100,70 L108,92 L130,100 L108,108 L100,130 L92,108 L70,100 L92,92 Z" fill="#ffffff"/>
+  </g>
+</svg>
